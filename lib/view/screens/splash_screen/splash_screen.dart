@@ -1,0 +1,96 @@
+import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding:  EdgeInsets.all(16.r),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 140.h),
+            Center(
+              child: SizedBox(
+                height: 200.h,
+                width: 200.w,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 90.r,
+                      backgroundColor: AppColor.primaryColor,
+                    ),
+                    SizedBox(
+                      height: 400.h,
+                      width: 400.w,
+                      child: Image.asset(AppImage.splashScreenLogo),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(AppImage.splashScreenVerticalLineLogo),
+                  SizedBox(height: 8.h),
+                  Text(
+                    'Chase Your',
+                    style: TextStyle(
+                      fontSize: 48.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.themeColor,
+                    ),
+                  ),
+                  Text(
+                    'Dream',
+                    style: TextStyle(
+                      fontSize: 48.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.themeColor,
+                    ),
+                  ),
+                  Text(
+                    'Join us in creating a brighter future. Your donations empower those in need, bringing hope and change to lives.',
+                    style: TextStyle(color: AppColor.themeColor),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 48.h),
+            Padding(
+              padding: const EdgeInsets.only(left: 24, right: 24),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  textStyle: TextStyle(fontSize: 18.h, fontWeight: FontWeight.w500),
+                  fixedSize: Size.fromWidth(double.maxFinite),
+                  backgroundColor: AppColor.themeColor,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 12.w),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32),
+                  ),
+                ),
+                child: Text('Start Your Journey!'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
