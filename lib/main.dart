@@ -24,6 +24,12 @@ class CommunityEngagedApp extends StatelessWidget {
             home: SplashScreen(),
             initialRoute: AppRoutes.splashScreen,
             getPages: AppRoutes.routes,
+            theme: ThemeData(
+              scaffoldBackgroundColor: Colors.white,
+              appBarTheme: AppBarTheme(
+                color: Colors.white,
+              ),
+            ),
           ),
     );
   }

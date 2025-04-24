@@ -1,7 +1,11 @@
+import 'package:community_engaged_app/routes/app_routes.dart';
+import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding:  EdgeInsets.all(16.r),
+        padding: EdgeInsets.all(16.r),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -73,19 +77,11 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(height: 48.h),
             Padding(
               padding: const EdgeInsets.only(left: 24, right: 24),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  textStyle: TextStyle(fontSize: 18.h, fontWeight: FontWeight.w500),
-                  fixedSize: Size.fromWidth(double.maxFinite),
-                  backgroundColor: AppColor.themeColor,
-                  foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 12.w),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32),
-                  ),
-                ),
-                child: Text('Start Your Journey!'),
+              child: CustomElevatedButtonWidget(
+                buttonName: 'Start Your Journey!',
+                onTapNext: () {
+                  Get.offAllNamed(AppRoutes.signInScreen);
+                },
               ),
             ),
           ],
