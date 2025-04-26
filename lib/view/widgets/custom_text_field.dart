@@ -73,6 +73,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: widget.keyboardType,
       obscuringCharacter: widget.obscure!,
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      textInputAction: TextInputAction.next,
       maxLines: widget.maxLine ?? 1,
       // validator: widget.validator,
       validator: widget.validator ??

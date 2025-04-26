@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:community_engaged_app/helpers/image_picker_helper.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
@@ -15,11 +18,35 @@ class TakeYourPictureScreen extends StatefulWidget {
 }
 
 class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
+  File? _image;
+  ImagePickerHelper _imagePickerHelper = ImagePickerHelper();
+
+  void _getPhotoFromGallery() async {
+    final image = await _imagePickerHelper.pickFromGallery();
+    if (image != null) {
+      setState(() {
+        _image = image;
+      });
+    }
+  }
+
+  void _getPhotoFromCamera() async {
+    final image = await _imagePickerHelper.pickFromCamera();
+    if (image != null) {
+      setState(() {
+        _image = image;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Take Your Picture', style: TextStyle(fontWeight: FontWeight.w500),),
+        title: Text(
+          'Take Your Picture',
+          style: TextStyle(fontWeight: FontWeight.w500),
+        ),
         centerTitle: true,
       ),
       body: Padding(
@@ -27,49 +54,93 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
         child: Column(
           children: [
             StepProgressBar(currentStep: 3),
-            SizedBox(height: 20.h,),
-            CircleAvatar(radius: 80.r,),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 20.h),
+            CircleAvatar(radius: 80.r,backgroundImage: _image !=null ? FileImage(_image!) :null),
+            SizedBox(height: 20.h),
             Padding(
               padding: const EdgeInsets.only(left: 68, right: 68),
-              child: CustomElevatedButtonWidget(buttonName: 'Take Picture', onTapNext: (){}),
-            ),
-            SizedBox(height: 150.h,),
-            CustomElevatedButtonWidget(buttonName: 'Sign Up', onTapNext:(){
-              _showReferralDialog(context);
-            }),
+              child: CustomElevatedButtonWidget(
+                buttonName: 'Take Picture',
+                onTapNext: () {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return SizedBox(
+                        height: 200,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              TextButton(
+                                child: const Text('Gallery'),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  _getPhotoFromGallery();
+                                }
 
+                              ),
+                              Divider(),
+                              TextButton(
+                                child: const Text('Camera'),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    _getPhotoFromCamera();
+                                  }
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 150.h),
+            CustomElevatedButtonWidget(
+              buttonName: 'Sign Up',
+              onTapNext: () {
+                _showReferralDialog(context);
+              },
+            ),
           ],
         ),
       ),
     );
   }
+
   void _showReferralDialog(BuildContext context) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Complete Signup",style: TextStyle(color: AppColor.themeColor),),
-          content: Text("Do you want to signup with Referral code?"),
+          title: Text(
+            "Complete SignUp!",
+            style: TextStyle(color: AppColor.themeColor),
+          ),
+          content: Text("Do you want to SignUp with Referral code?"),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 Get.toNamed(AppRoutes.addReferralCodeScreen);
               },
-              child: Text("Yes",style: TextStyle(color: AppColor.themeColor),),
+              child: Text("Yes", style: TextStyle(color: AppColor.themeColor)),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text("No",style: TextStyle(color: AppColor.textButtonColor),),
+              child: Text(
+                "No",
+                style: TextStyle(color: AppColor.textButtonColor),
+              ),
             ),
           ],
         );
       },
     );
   }
-
 }

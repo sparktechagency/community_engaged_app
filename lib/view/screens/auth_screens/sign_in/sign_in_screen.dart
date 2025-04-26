@@ -107,7 +107,8 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void _onTapSignInButton() {
-    if (_formKey.currentState!.validate()) {}
+    // if (_formKey.currentState!.validate()) {}
+    Get.offAllNamed(AppRoutes.mainBottomNavBarScreen);
   }
 
   void _onTapSignupButton() {

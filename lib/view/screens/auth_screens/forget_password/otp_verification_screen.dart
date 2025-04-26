@@ -12,6 +12,7 @@ import 'package:get/get_core/src/get_main.dart';
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({super.key});
 
+
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
@@ -26,9 +27,36 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   //   _startTimer();
   //   super.initState();
   // }
+  Timer? _timer;
+  int _start = 0;
+
+  void startTimer() {
+    setState(() {
+      _start = 150;
+    });
+    _timer?.cancel();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_start == 0) {
+        timer.cancel();
+      } else {
+        setState(() {
+          _start--;
+        });
+      }
+    });
+  }
+
+  String get timerText {
+    final minutes = _start ~/ 60;
+    final seconds = _start % 60;
+    return '${minutes.toString()}:${seconds.toString().padLeft(2, '0')}';
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
+    final bool isWaiting = _start > 0;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -51,9 +79,11 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Didn't get the code?"),
-                  GestureDetector(
+                  isWaiting
+                      ? Text('Resend code in $timerText')
+                      : GestureDetector(
                     onTap: () {
-                      // _startTimer();
+                      isWaiting ? null : startTimer();
                     },
                     child: Text(
                       'Resend',
@@ -79,31 +109,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     );
   }
 
-  // void _onTapOtpVerification() {
-  //   _startTimer();
-  // }
-  //
-  // void _startTimer() {
-  //   _timer.cancel();
-  //   _canResend = false;
-  //   _start = 30;
-  //   _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-  //     if (_start == 0) {
-  //       setState(() {
-  //         _canResend = true;
-  //       });
-  //       timer.cancel();
-  //     } else {setState(() {
-  //       _start--;
-  //     });
-  //
-  //     }
-  //   });
-  // }
-  //
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   _timer.cancel();
-  // }
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
 }
