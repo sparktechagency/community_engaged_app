@@ -49,62 +49,64 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            StepProgressBar(currentStep: 3),
-            SizedBox(height: 20.h),
-            CircleAvatar(radius: 80.r,backgroundImage: _image !=null ? FileImage(_image!) :null),
-            SizedBox(height: 20.h),
-            Padding(
-              padding: const EdgeInsets.only(left: 68, right: 68),
-              child: CustomElevatedButtonWidget(
-                buttonName: 'Take Picture',
-                onTapNext: () {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return SizedBox(
-                        height: 200,
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              TextButton(
-                                child: const Text('Gallery'),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  _getPhotoFromGallery();
-                                }
-
-                              ),
-                              Divider(),
-                              TextButton(
-                                child: const Text('Camera'),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              StepProgressBar(currentStep: 3),
+              SizedBox(height: 20.h),
+              CircleAvatar(radius: 80.r,backgroundImage: _image !=null ? FileImage(_image!) :null),
+              SizedBox(height: 20.h),
+              Padding(
+                padding: const EdgeInsets.only(left: 68, right: 68),
+                child: CustomElevatedButtonWidget(
+                  buttonName: 'Take Picture',
+                  onTapNext: () {
+                    showModalBottomSheet<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return SizedBox(
+                          height: 200,
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                TextButton(
+                                  child: const Text('Gallery'),
                                   onPressed: () {
                                     Navigator.pop(context);
-                                    _getPhotoFromCamera();
+                                    _getPhotoFromGallery();
                                   }
-                              ),
-                            ],
+        
+                                ),
+                                Divider(),
+                                TextButton(
+                                  child: const Text('Camera'),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      _getPhotoFromCamera();
+                                    }
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  );
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 150.h),
+              CustomElevatedButtonWidget(
+                buttonName: 'Sign Up',
+                onTapNext: () {
+                  _showReferralDialog(context);
                 },
               ),
-            ),
-            SizedBox(height: 150.h),
-            CustomElevatedButtonWidget(
-              buttonName: 'Sign Up',
-              onTapNext: () {
-                _showReferralDialog(context);
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

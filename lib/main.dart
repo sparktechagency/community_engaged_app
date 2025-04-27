@@ -1,10 +1,17 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/view/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:month_year_picker/month_year_picker.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(CommunityEngagedApp());
 }
 
@@ -30,6 +37,10 @@ class CommunityEngagedApp extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            localizationsDelegates: [
+              GlobalMaterialLocalizations.delegate,
+              MonthYearPickerLocalizations.delegate,
+            ],
           ),
     );
   }

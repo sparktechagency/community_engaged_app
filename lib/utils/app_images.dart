@@ -5,4 +5,5 @@ class AppImage{
   static const String referralCodeLogo = '$_baseUrl/bro.svg';
   static const String homeLogo = '$_baseUrl/Group.svg';
   static const String customCard = '$_baseUrl/customCard.svg';
+  static const String supportImageUrl = '$_baseUrl/supportImage.png';
 }

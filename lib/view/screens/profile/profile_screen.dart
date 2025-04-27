@@ -1,0 +1,104 @@
+import 'package:community_engaged_app/routes/app_routes.dart';
+import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/widgets/profile_picture_with_referral%20_code_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 24, top: 16),
+          child: SvgPicture.asset(AppImage.homeLogo, fit: BoxFit.contain),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 16, right: 8),
+            child: IconButton(
+              onPressed: () {
+                Get.toNamed(AppRoutes.notificationScreen);
+              },
+              icon: Stack(
+                alignment: Alignment(1,-1.5),
+                children: [
+                  Icon(
+                    Icons.notifications,
+                    size: 30.h,
+                    color: AppColor.themeColor,
+                  ),
+                  Container(
+                    width: 20.w,
+                    decoration: BoxDecoration(
+                        color: AppColor.textButtonColor,
+                        shape: BoxShape.circle
+                    ),
+                    child: Text('01',style: TextStyle(color: AppColor.cardColorE9F2F9),),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            SizedBox(height: 30.h,),
+            Center(
+              child: ProfilePictureWithReferralCodeWidget(),
+            ),
+            SizedBox(height: 16.h,),
+            Text(
+              'Mohammed-Intellu',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w700,
+                color: AppColor.themeColor,
+              ),
+            ),
+            SizedBox(height: 16.h,),
+            GestureDetector(
+              onTap: (){
+                Get.toNamed(AppRoutes.profileInformationScreen);
+              },
+              child: ListTile(
+                leading: Icon(Icons.perm_identity,size: 30,color: AppColor.themeColor,),
+                title: Text('Profile Information',style: TextStyle(fontWeight: FontWeight.w500,color: AppColor.themeColor),),
+                trailing: Icon(Icons.arrow_forward_ios_outlined,color: AppColor.themeColor,),
+              ),
+            ),
+            // SizedBox(height: 8.h,),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.settings,size: 30,color: AppColor.themeColor,),
+              title: Text('Settings',style: TextStyle(fontWeight: FontWeight.w500,color: AppColor.themeColor),),
+              trailing: Icon(Icons.arrow_forward_ios_outlined,color: AppColor.themeColor,),
+            ),
+            // SizedBox(height: 8.h,),
+            Divider(),
+            ListTile(
+              leading:  Icon(Icons.logout_outlined,size: 30,color: AppColor.themeColor,),
+              title: Text('Logout',style: TextStyle(fontWeight: FontWeight.w500,color: AppColor.themeColor),),
+              trailing: Icon(Icons.arrow_forward_ios_outlined,color: AppColor.themeColor,),
+            ),
+            Divider(),
+          ],
+        ),
+      ),
+    );
+  }
+}

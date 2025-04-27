@@ -1,5 +1,7 @@
+import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/screens/home/home_screen.dart';
+import 'package:community_engaged_app/view/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,8 +16,8 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   int _selectedIndex =0;
   final List<Widget> _screens =[
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    SupportScreen(),
+    ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
               ],
             ),
             child: NavigationBar(
-              height: 70,
+              // height: 40,
               backgroundColor: AppColor.themeColor,
               labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
               // animationDuration:Duration(seconds: 1) ,
@@ -49,9 +51,9 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
                 });
               },
               destinations: [
-                NavigationDestination(icon: Icon(Icons.home_outlined,size: 25.h,color: _selectedIndex ==0 ? AppColor.themeColor : Colors.black,), label: 'Home'),
-                NavigationDestination(icon: Icon(Icons.support_agent_outlined,size: 25.h,color: _selectedIndex ==1 ? AppColor.themeColor : Colors.black), label: 'Support'),
-                NavigationDestination(icon: Icon(Icons.person_outline,size: 25.h,color: _selectedIndex ==2 ? AppColor.themeColor : Colors.black), label: 'Profile'),
+                NavigationDestination(icon: Icon(Icons.home_outlined,size: 25.h,color: _selectedIndex ==0 ? AppColor.themeColor : Colors.white,), label: 'Home'),
+                NavigationDestination(icon: Icon(Icons.support_agent_outlined,size: 25.h,color: _selectedIndex ==1 ? AppColor.themeColor : Colors.white), label: 'Support'),
+                NavigationDestination(icon: Icon(Icons.person_outline,size: 25.h,color: _selectedIndex ==2 ? AppColor.themeColor : Colors.white), label: 'Profile'),
               ],
             ),
           ),
