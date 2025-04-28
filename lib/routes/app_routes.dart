@@ -1,6 +1,7 @@
 
 
 
+
 import 'export.dart';
 
 class AppRoutes{
@@ -20,6 +21,12 @@ class AppRoutes{
   static const  String notificationScreen ="/notification-screen";
   static const  String profileScreen ="/profile-screen";
   static const  String profileInformationScreen ="/profile-information-screen";
+  static const  String editProfileScreen ="/edit-profile-screen";
+  static const  String settingScreen ="/setting-screen";
+  static const  String changePasswordScreen ="/change-password-screen";
+  static const  String privacyPolicyScreen ="/privacy-policy-screen";
+  static const  String termsOfServiceScreen ="/terms-of-service-screen";
+  static const  String aboutUsScreen ="/about-us-screen";
 
   static List<GetPage> get routes => [
     GetPage(name: splashScreen, page: () => SplashScreen()),
@@ -38,6 +45,12 @@ class AppRoutes{
     GetPage(name: notificationScreen, page: () => NotificationScreen()),
     GetPage(name: profileScreen, page: () => ProfileScreen()),
     GetPage(name: profileInformationScreen, page: () => ProfileInformationScreen()),
+    GetPage(name: editProfileScreen, page: () => EditProfileScreen()),
+    GetPage(name: settingScreen, page: () => SettingsScreen()),
+    GetPage(name: changePasswordScreen, page: () => ChangePasswordScreen()),
+    GetPage(name: privacyPolicyScreen, page: () => PrivacyPolicyScreen()),
+    GetPage(name: termsOfServiceScreen, page: () => TermsOfServiceScreen()),
+    GetPage(name: aboutUsScreen, page: () => AboutUsScreen()),
 
 
   ];

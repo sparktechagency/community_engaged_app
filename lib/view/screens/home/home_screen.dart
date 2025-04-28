@@ -188,9 +188,12 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text('Payment Date',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: AppColor.themeColor),),
                         Text('Status',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: AppColor.themeColor),),

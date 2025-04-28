@@ -6,4 +6,5 @@ class AppImage{
   static const String homeLogo = '$_baseUrl/Group.svg';
   static const String customCard = '$_baseUrl/customCard.svg';
   static const String supportImageUrl = '$_baseUrl/supportImage.png';
+  static const String errorImageUrl = '$_baseUrl/404PageImage.png';
 }

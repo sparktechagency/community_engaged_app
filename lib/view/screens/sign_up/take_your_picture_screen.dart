@@ -4,6 +4,7 @@ import 'package:community_engaged_app/helpers/image_picker_helper.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
+import 'package:community_engaged_app/view/widgets/custom_pop_up_widget.dart';
 import 'package:community_engaged_app/view/widgets/step_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +57,10 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
             children: [
               StepProgressBar(currentStep: 3),
               SizedBox(height: 20.h),
-              CircleAvatar(radius: 80.r,backgroundImage: _image !=null ? FileImage(_image!) :null),
+              CircleAvatar(
+                radius: 80.r,
+                backgroundImage: _image != null ? FileImage(_image!) : null,
+              ),
               SizedBox(height: 20.h),
               Padding(
                 padding: const EdgeInsets.only(left: 68, right: 68),
@@ -78,16 +82,15 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                     _getPhotoFromGallery();
-                                  }
-        
+                                  },
                                 ),
                                 Divider(),
                                 TextButton(
                                   child: const Text('Camera'),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                      _getPhotoFromCamera();
-                                    }
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    _getPhotoFromCamera();
+                                  },
                                 ),
                               ],
                             ),
@@ -101,8 +104,17 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
               SizedBox(height: 150.h),
               CustomElevatedButtonWidget(
                 buttonName: 'Sign Up',
-                onTapNext: () {
-                  _showReferralDialog(context);
+                onTapNext: () async {
+                  bool? result = await customPopUpWidget(
+                    context: context,
+                    title: 'Complete Signup',
+                    subtitle: 'Do you want to Signup with Referral code?',
+                    firstButton: 'Yes',
+                    lastButton: 'No',
+                    onPressedFirstButton: () {
+                      Get.toNamed(AppRoutes.addReferralCodeScreen);
+                    },
+                  );
                 },
               ),
             ],
@@ -112,37 +124,48 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
     );
   }
 
-  void _showReferralDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            "Complete SignUp!",
-            style: TextStyle(color: AppColor.themeColor),
-          ),
-          content: Text("Do you want to SignUp with Referral code?"),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                Get.toNamed(AppRoutes.addReferralCodeScreen);
-              },
-              child: Text("Yes", style: TextStyle(color: AppColor.themeColor)),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                "No",
-                style: TextStyle(color: AppColor.textButtonColor),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // void _showReferralDialog(BuildContext context) {
+  //   showDialog(
+  //     context: context,
+  //     barrierDismissible: false,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         actionsAlignment: MainAxisAlignment.spaceEvenly,
+  //         alignment: Alignment.center,
+  //         title: Text(
+  //           "Complete SignUp!",
+  //           style: TextStyle(color: AppColor.themeColor),
+  //         ),
+  //         content: Text("Do you want to SignUp with Referral code?"),
+  //         actions: [
+  //           ElevatedButton(
+  //             style: ElevatedButton.styleFrom(
+  //               // fixedSize: Size(25, 15)
+  //               side: BorderSide(color: AppColor.themeColor)
+  //             ),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //               Get.toNamed(AppRoutes.addReferralCodeScreen);
+  //             },
+  //             child: Text("Yes", style: TextStyle(color: AppColor.themeColor)),
+  //           ),
+  //           ElevatedButton(
+  //             style: ElevatedButton.styleFrom(
+  //               // fixedSize: Size(25, 15)
+  //               //   side: BorderSide(color: AppColor.themeColor)
+  //               backgroundColor: AppColor.textButtonColor,
+  //               foregroundColor: AppColor.cardColorE9F2F9,
+  //             ),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text(
+  //               "No",
+  //             ),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 }

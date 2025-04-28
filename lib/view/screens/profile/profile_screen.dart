@@ -1,6 +1,8 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/screens/404_page/404_page_screen.dart';
+import 'package:community_engaged_app/view/widgets/custom_pop_up_widget.dart';
 import 'package:community_engaged_app/view/widgets/profile_picture_with_referral%20_code_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Get.toNamed(AppRoutes.notificationScreen);
               },
               icon: Stack(
-                alignment: Alignment(1,-1.5),
+                alignment: Alignment(1, -1.5),
                 children: [
                   Icon(
                     Icons.notifications,
@@ -42,11 +44,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Container(
                     width: 20.w,
                     decoration: BoxDecoration(
-                        color: AppColor.textButtonColor,
-                        shape: BoxShape.circle
+                      color: AppColor.textButtonColor,
+                      shape: BoxShape.circle,
                     ),
-                    child: Text('01',style: TextStyle(color: AppColor.cardColorE9F2F9),),
-                  )
+                    child: Text(
+                      '01',
+                      style: TextStyle(color: AppColor.cardColorE9F2F9),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -57,11 +62,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(height: 30.h,),
-            Center(
-              child: ProfilePictureWithReferralCodeWidget(),
-            ),
-            SizedBox(height: 16.h,),
+            SizedBox(height: 30.h),
+            Center(child: ProfilePictureWithReferralCodeWidget()),
+            SizedBox(height: 16.h),
             Text(
               'Mohammed-Intellu',
               style: TextStyle(
@@ -70,30 +73,91 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: AppColor.themeColor,
               ),
             ),
-            SizedBox(height: 16.h,),
+            SizedBox(height: 16.h),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Get.toNamed(AppRoutes.profileInformationScreen);
               },
               child: ListTile(
-                leading: Icon(Icons.perm_identity,size: 30,color: AppColor.themeColor,),
-                title: Text('Profile Information',style: TextStyle(fontWeight: FontWeight.w500,color: AppColor.themeColor),),
-                trailing: Icon(Icons.arrow_forward_ios_outlined,color: AppColor.themeColor,),
+                leading: Icon(
+                  Icons.perm_identity,
+                  size: 30,
+                  color: AppColor.themeColor,
+                ),
+                title: Text(
+                  'Profile Information',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: AppColor.themeColor,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color: AppColor.themeColor,
+                ),
               ),
             ),
             // SizedBox(height: 8.h,),
             Divider(),
-            ListTile(
-              leading: Icon(Icons.settings,size: 30,color: AppColor.themeColor,),
-              title: Text('Settings',style: TextStyle(fontWeight: FontWeight.w500,color: AppColor.themeColor),),
-              trailing: Icon(Icons.arrow_forward_ios_outlined,color: AppColor.themeColor,),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.settingScreen);
+              },
+              child: ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  size: 30,
+                  color: AppColor.themeColor,
+                ),
+                title: Text(
+                  'Settings',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: AppColor.themeColor,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color: AppColor.themeColor,
+                ),
+              ),
             ),
             // SizedBox(height: 8.h,),
             Divider(),
-            ListTile(
-              leading:  Icon(Icons.logout_outlined,size: 30,color: AppColor.themeColor,),
-              title: Text('Logout',style: TextStyle(fontWeight: FontWeight.w500,color: AppColor.themeColor),),
-              trailing: Icon(Icons.arrow_forward_ios_outlined,color: AppColor.themeColor,),
+            GestureDetector(
+              onTap: () {
+                customPopUpWidget(
+                  context: context,
+                  title: 'Log Out!',
+                  subtitle: 'Are you sure want to Logout?',
+                  firstButton: 'Cancel',
+                  lastButton: 'Logout',
+                  onPressedLastButton: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ErrorScreen()),
+                    );
+                  },
+                );
+              },
+              child: ListTile(
+                leading: Icon(
+                  Icons.logout_outlined,
+                  size: 30,
+                  color: AppColor.themeColor,
+                ),
+                title: Text(
+                  'Logout',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: AppColor.themeColor,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color: AppColor.themeColor,
+                ),
+              ),
             ),
             Divider(),
           ],

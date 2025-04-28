@@ -15,4 +15,9 @@ export 'package:community_engaged_app/view/screens/support/support_screen.dart';
 export 'package:community_engaged_app/view/screens/home/notification_screen.dart';
 export 'package:community_engaged_app/view/screens/profile/profile_information_screen.dart';
 export 'package:community_engaged_app/view/screens/profile/profile_screen.dart';
-
+export 'package:community_engaged_app/view/screens/profile/edit_profile_screen.dart';
+export 'package:community_engaged_app/view/screens/settings/change_password/change_password_screen.dart';
+export 'package:community_engaged_app/view/screens/settings/settings_screen.dart';
+export 'package:community_engaged_app/view/screens/settings/about_us/about_us_screen.dart';
+export 'package:community_engaged_app/view/screens/settings/privacy_policy/privacy_policy_screen.dart';
+export 'package:community_engaged_app/view/screens/settings/terms_of_service/terms_of_service_screen.dart';
