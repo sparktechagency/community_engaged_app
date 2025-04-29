@@ -1,6 +1,7 @@
-import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 Future<bool?> customPopUpWidget({
@@ -19,8 +20,10 @@ Future<bool?> customPopUpWidget({
       return AlertDialog(
         actionsAlignment: MainAxisAlignment.spaceEvenly,
         alignment: Alignment.center,
-        title: Text(title, style: TextStyle(color: AppColor.themeColor)),
-        content: Text(subtitle),
+        // title: Text(title, style: TextStyle(color: AppColor.themeColor)),
+        title: CustomText(text: title,fontWeight: FontWeight.bold,fontsize: 18.sp,),
+        // content: Text(subtitle),
+        content: CustomText(text: subtitle,textOverflow: TextOverflow.fade,fontWeight: FontWeight.w500,),
         actions: [
           ElevatedButton(
             style: ElevatedButton.styleFrom(

@@ -5,6 +5,8 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
+import 'package:community_engaged_app/view/widgets/custom_photo_picker_bottom_sheet.dart';
+import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/step_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,9 +29,9 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
     final pickedImage = await _imagePickerHelper.pickFromGallery();
     if (pickedImage != null) {
       setState(() {
-        if(isFrontSide){
+        if (isFrontSide) {
           _frontSideImage = pickedImage;
-        }else{
+        } else {
           _backSideImage = pickedImage;
         }
       });
@@ -40,11 +42,11 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
   /// front side card and back side  pic in backside card
   Future<void> _getImageFromCamera({required bool isFrontSide}) async {
     final pickedImage = await _imagePickerHelper.pickFromCamera();
-    if(pickedImage != null){
+    if (pickedImage != null) {
       setState(() {
-        if(isFrontSide){
+        if (isFrontSide) {
           _frontSideImage = pickedImage;
-        }else{
+        } else {
           _backSideImage = pickedImage;
         }
       });
@@ -54,12 +56,9 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'NID Picture',
-          style: TextStyle(fontWeight: FontWeight.w500),
-        ),
-        centerTitle: true,
+      appBar: AppBar(title: CustomText(text: 'NID Picture',color: Colors.black,fontWeight: FontWeight.bold,fontsize: 20,),
+
+      centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -88,12 +87,16 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
 
   GestureDetector _takingBackSideNidPicture(BuildContext context) {
     return GestureDetector(
-              onTap: () {
-                onTapPickImageSource(context,isFrontSide: false);
-              },
-              child:
-              _backSideImage != null
-                  ? Container(
+      onTap: () async {
+        await customPhotoPickerBottomSheet(
+          context: context,
+          onGalleryTap: () => _getImageFromGallery(isFrontSide: false),
+          onCameraTap: () => _getImageFromCamera(isFrontSide: false),
+        );
+      },
+      child:
+          _backSideImage != null
+              ? Container(
                 height: 200,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -106,71 +109,35 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
                   fit: BoxFit.cover,
                 ),
               )
-                  : _uploadNidPictureCard(
-                'Upload back side Picture here',
-              ),
-            );
+              : _uploadNidPictureCard('Upload back side Picture here'),
+    );
   }
 
   GestureDetector _takingFrontSideNidPicture(BuildContext context) {
     return GestureDetector(
-              onTap: () {
-                onTapPickImageSource(context,isFrontSide: true);
-              },
-              child:
-                  _frontSideImage != null
-                      ? Container(
-                    height: 200,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Image.file(
-                          _frontSideImage!,
-                          height: 200,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                      : _uploadNidPictureCard(
-                        'Upload font side Picture here',
-                      ),
-            );
-  }
-
-  ///Pick image source from gallery and camera
-  ///setting logic where the picture will go in front side or in back side
-  Future<void> onTapPickImageSource(BuildContext context,{required bool isFrontSide}) {
-    return showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return SizedBox(
-          height: 200,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                TextButton(
-                  child: const Text('Gallery'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    _getImageFromGallery(isFrontSide: isFrontSide);
-                  },
-                ),
-                Divider(),
-                TextButton(
-                  child: const Text('Camera'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    _getImageFromCamera(isFrontSide: isFrontSide);
-                  },
-                ),
-              ],
-            ),
-          ),
+      onTap: () async {
+        await customPhotoPickerBottomSheet(
+          context: context,
+          onGalleryTap: () => _getImageFromGallery(isFrontSide: true),
+          onCameraTap: () => _getImageFromCamera(isFrontSide: true),
         );
       },
+      child:
+          _frontSideImage != null
+              ? Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Image.file(
+                  _frontSideImage!,
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.contain,
+                ),
+              )
+              : _uploadNidPictureCard('Upload font side Picture here'),
     );
   }
 

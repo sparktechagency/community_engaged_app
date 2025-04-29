@@ -5,6 +5,7 @@ import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_pin_code_text_field.dart';
+import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -59,10 +60,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     final bool isWaiting = _start > 0;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'OTP verification',
-          style: TextStyle(fontWeight: FontWeight.w500),
-        ),
+        title: CustomText(text: 'OTP Verification',color: Colors.black,fontWeight: FontWeight.bold,fontsize: 20,),
+
         centerTitle: true,
       ),
       body: SingleChildScrollView(

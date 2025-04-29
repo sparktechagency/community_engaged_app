@@ -1,12 +1,11 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
-import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
-import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
+import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/step_progress_bar.dart';
+import 'package:community_engaged_app/view/widgets/text_field_for_this_project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -27,7 +26,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up', style: TextStyle(fontWeight: FontWeight.w500)),
+        title: CustomText(text: 'Sign Up',color: Colors.black,fontWeight: FontWeight.bold,fontsize: 20,),
+
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -39,67 +39,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 StepProgressBar(currentStep: 1),
                 SizedBox(height: 40.h),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Your Name', style: TextStyle(fontSize: 16.sp)),
-                    SizedBox(height: 2.h),
-                    CustomTextField(
-                      controller: _nameTEController,
-                      hintText: 'Your name',
-                    ),
-                  ],
+                TextFieldForThisProject(
+                  controller: _nameTEController,
+                  titleName: 'Your Name',
+                  hintText: 'Name',
                 ),
                 SizedBox(height: 8.h),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Phone', style: TextStyle(fontSize: 16.sp)),
-                    SizedBox(height: 2.h),
-                    CustomTextField(
-                      controller: _phoneTEController,
-                      hintText: 'Phone number',
-                    ),
-                  ],
-                ),
 
-                SizedBox(height: 8.h),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('E-mail', style: TextStyle(fontSize: 16.sp)),
-                    SizedBox(height: 2.h),
-                    CustomTextField(
-                      controller: _emailTEController,
-                      hintText: 'email',
-                      isEmail: true,
-                    ),
-                  ],
+                TextFieldForThisProject(
+                  controller: _phoneTEController,
+                  titleName: 'Phone',
+                  hintText: 'Phone Number',
                 ),
                 SizedBox(height: 8.h),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Password', style: TextStyle(fontSize: 16.sp)),
-                    SizedBox(height: 2.h),
-                    CustomTextField(
-                      controller: _passwordTEController,
-                      hintText: 'password',
-                      isPassword: true,
-                    ),
-                  ],
+
+                TextFieldForThisProject(
+                  controller: _nameTEController,
+                  titleName: 'E-mail',
+                  hintText: 'Email address',
                 ),
                 SizedBox(height: 8.h),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Address', style: TextStyle(fontSize: 16.sp)),
-                    SizedBox(height: 2.h),
-                    CustomTextField(
-                      controller: _addressTEController,
-                      hintText: 'address',
-                    ),
-                  ],
+
+                TextFieldForThisProject(
+                  controller: _nameTEController,
+                  titleName: 'Password',
+                  hintText: 'Password',
+                ),
+                SizedBox(height: 8.h),
+
+                TextFieldForThisProject(
+                  controller: _nameTEController,
+                  titleName: 'Address',
+                  hintText: 'Your address',
                 ),
                 SizedBox(height: 16.h),
                 CustomElevatedButtonWidget(
@@ -133,3 +104,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _passwordTEController.dispose();
   }
 }
+
+

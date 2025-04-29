@@ -1,4 +1,5 @@
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,17 +45,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         Icon(Icons.notifications,color: AppColor.cardColorE9F2F9,)
                       ],
                     ),
-                    title: Text('Confirm Payment'),
+                    title: CustomText(text: 'Confirm Payment',textAlign: TextAlign.start,fontWeight: FontWeight.w700,color: Colors.black,),
                     subtitle: Column(
                       // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Your payment is completed'),
+                        CustomText(text: 'Your payment is completed',textAlign: TextAlign.start,fontWeight: FontWeight.w500,color: Colors.black,fontsize: 14.sp,),
                         Row(
                           children: [
-                            Text('10:00am'),
+                            CustomText(text: '10:00am',textAlign: TextAlign.start,fontWeight: FontWeight.w500,color: Colors.black,fontsize: 12.sp,),
                             SizedBox(width: 16.w,),
-                            Text('Today'),
+                            CustomText(text: 'Today',textAlign: TextAlign.start,fontWeight: FontWeight.w500,color: Colors.black,fontsize: 12.sp,),
                           ],
                         )
                       ],

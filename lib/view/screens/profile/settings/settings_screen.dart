@@ -2,6 +2,7 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_pop_up_widget.dart';
+import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +18,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings', style: TextStyle(fontWeight: FontWeight.w500)),
+        title: CustomText(
+          text: 'Settings',
+          fontsize: 22.sp,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
         centerTitle: true,
       ),
       body: Padding(
@@ -38,12 +44,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         size: 30,
                         color: AppColor.themeColor,
                       ),
-                      title: Text(
-                        'Change Password',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: AppColor.themeColor,
-                        ),
+                      title: CustomText(
+                        text: 'Change Password',
+                        fontWeight: FontWeight.w600,
+                        textAlign: TextAlign.start,
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios_outlined,
@@ -62,13 +66,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         size: 30,
                         color: AppColor.themeColor,
                       ),
-                      title: Text(
-                        'Privacy Policy',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: AppColor.themeColor,
-                        ),
+                      title: CustomText(
+                        text: 'Privacy Policy',
+                        fontWeight: FontWeight.w600,
+                        textAlign: TextAlign.start,
                       ),
+
                       trailing: Icon(
                         Icons.arrow_forward_ios_outlined,
                         color: AppColor.themeColor,
@@ -76,51 +79,48 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ),
                   Divider(),
-                  ListTile(
-                    leading: Icon(
-                      Icons.error,
-                      size: 30,
-                      color: AppColor.themeColor,
-                    ),
-                    title: GestureDetector(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.termsOfServiceScreen);
-                      },
-                      child: Text(
-                        'Terms of service',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: AppColor.themeColor,
-                        ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.termsOfServiceScreen);
+                    },
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.error,
+                        size: 30,
+                        color: AppColor.themeColor,
                       ),
-                    ),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: AppColor.themeColor,
+                      title: CustomText(
+                        text: 'Terms of Service',
+                        fontWeight: FontWeight.w600,
+                        textAlign: TextAlign.start,
+                      ),
+
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        color: AppColor.themeColor,
+                      ),
                     ),
                   ),
                   Divider(),
-                  ListTile(
-                    leading: Icon(
-                      Icons.question_answer,
-                      size: 30,
-                      color: AppColor.themeColor,
-                    ),
-                    title: GestureDetector(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.aboutUsScreen);
-                      },
-                      child: Text(
-                        'About us',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: AppColor.themeColor,
-                        ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.aboutUsScreen);
+                    },
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.question_answer,
+                        size: 30,
+                        color: AppColor.themeColor,
                       ),
-                    ),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: AppColor.themeColor,
+                      title: CustomText(
+                        text: 'About Us',
+                        fontWeight: FontWeight.w600,
+                        textAlign: TextAlign.start,
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        color: AppColor.themeColor,
+                      ),
                     ),
                   ),
                   Divider(),

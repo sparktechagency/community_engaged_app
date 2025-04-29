@@ -1,7 +1,5 @@
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
-import 'package:community_engaged_app/view/screens/home/home_screen.dart';
-import 'package:community_engaged_app/view/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

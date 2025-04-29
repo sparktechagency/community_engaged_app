@@ -4,7 +4,10 @@ import 'package:community_engaged_app/helpers/image_picker_helper.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
+import 'package:community_engaged_app/view/widgets/custom_photo_picker_bottom_sheet.dart';
+import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
+import 'package:community_engaged_app/view/widgets/text_field_for_this_project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -46,9 +49,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Edit Profile',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+        title: CustomText(
+          text: 'Edit Profile',
+          fontsize: 22.sp,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
         ),
         centerTitle: true,
       ),
@@ -63,11 +68,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   children: [
                     CircleAvatar(
                       radius: 60,
-                      backgroundImage: _updatePic !=null ?  FileImage(_updatePic!):AssetImage(AppImage.splashScreenLogo) ,
+                      backgroundImage:
+                          _updatePic != null
+                              ? FileImage(_updatePic!)
+                              : AssetImage(AppImage.splashScreenLogo),
                     ),
                     GestureDetector(
                       onTap: () {
-                        _onTapSelectPicture(context);
+                        customPhotoPickerBottomSheet(
+                          context: context,
+                          onGalleryTap: () => _getPhotoFromGallery(),
+                          onCameraTap: () => _getPhotoFromGallery(),
+                        );
                       },
                       child: Icon(
                         Icons.add_a_photo_outlined,
@@ -78,53 +90,34 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
               ),
               SizedBox(height: 8.h),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Your Name', style: TextStyle(fontSize: 16.sp)),
-                  SizedBox(height: 2.h),
-                  CustomTextField(
-                    controller: _nameTEController,
-                    hintText: 'Your name',
-                  ),
-                ],
+
+              TextFieldForThisProject(
+                titleName: 'Your Name',
+                hintText: 'Your Name',
+                controller: _nameTEController,
               ),
               SizedBox(height: 2.h),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('E-mail', style: TextStyle(fontSize: 16.sp)),
-                  SizedBox(height: 2.h),
-                  CustomTextField(
-                    controller: _emailTEController,
-                    hintText: 'example@gmail.com',
-                  ),
-                ],
+
+              TextFieldForThisProject(
+                titleName: 'E-mail',
+                hintText: 'email address',
+                controller: _emailTEController,
               ),
+
               SizedBox(height: 2.h),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Phone No.', style: TextStyle(fontSize: 16.sp)),
-                  SizedBox(height: 2.h),
-                  CustomTextField(
-                    controller: _phoneTEController,
-                    hintText: '193487-49128',
-                  ),
-                ],
+              TextFieldForThisProject(
+                titleName: 'Phone No.',
+                hintText: '2058210-09715097',
+                controller: _phoneTEController,
               ),
+
               SizedBox(height: 2.h),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Address', style: TextStyle(fontSize: 16.sp)),
-                  SizedBox(height: 2.h),
-                  CustomTextField(
-                    controller: _addressTEController,
-                    hintText: 'USA, New York, Post Code-2323',
-                  ),
-                ],
+              TextFieldForThisProject(
+                titleName: 'Address',
+                hintText: 'address',
+                controller: _addressTEController,
               ),
+
               SizedBox(height: 8.h),
               _buttonForUploadNid('NID Front.'),
               SizedBox(height: 8.h),
@@ -141,41 +134,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> _onTapSelectPicture(BuildContext context) {
-    return showModalBottomSheet<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return SizedBox(
-                            height: 200,
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  TextButton(
-                                      child: const Text('Gallery'),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        _getPhotoFromGallery();
-                                      }
-
-                                  ),
-                                  Divider(),
-                                  TextButton(
-                                      child: const Text('Camera'),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        _getPhotoFromCamera();
-                                      }
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      );
   }
 
   Widget _buttonForUploadNid(String name) {

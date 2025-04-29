@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+
+
+///custom photo picker when a will be tapped this widget will come from down with gallery
+///and camera option and can choose where want to take the photo
+Future<void> customPhotoPickerBottomSheet({
+  required BuildContext context,
+  required VoidCallback onGalleryTap,
+  required VoidCallback onCameraTap,
+}) {
+  return showModalBottomSheet<void>(
+    context: context,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (BuildContext context) {
+      return SizedBox(
+        height: 200,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            TextButton(
+              child: const Text('Gallery'),
+              onPressed: () {
+                Navigator.pop(context);
+                onGalleryTap();
+              },
+            ),
+            const Divider(),
+            TextButton(
+              child: const Text('Camera'),
+              onPressed: () {
+                Navigator.pop(context);
+                onCameraTap();
+              },
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
