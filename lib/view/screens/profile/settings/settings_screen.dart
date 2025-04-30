@@ -1,10 +1,13 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_pop_up_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -40,9 +43,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         Get.toNamed(AppRoutes.changePasswordScreen);
                       },
                       leading: Icon(
-                        Icons.lock,
+                        Icons.lock_open_outlined,
                         size: 30,
-                        color: AppColor.themeColor,
+                        color: AppColor.primaryColor,
                       ),
                       title: CustomText(
                         text: 'Change Password',
@@ -51,7 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios_outlined,
-                        color: AppColor.themeColor,
+                        color: AppColor.primaryColor,
                       ),
                     ),
                   ),
@@ -62,9 +65,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     },
                     child: ListTile(
                       leading: Icon(
-                        Icons.privacy_tip,
+                        Icons.privacy_tip_outlined,
                         size: 30,
-                        color: AppColor.themeColor,
+                        color: AppColor.primaryColor,
                       ),
                       title: CustomText(
                         text: 'Privacy Policy',
@@ -74,7 +77,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                       trailing: Icon(
                         Icons.arrow_forward_ios_outlined,
-                        color: AppColor.themeColor,
+                        color: AppColor.primaryColor,
                       ),
                     ),
                   ),
@@ -85,9 +88,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     },
                     child: ListTile(
                       leading: Icon(
-                        Icons.error,
+                        Icons.error_outline,
                         size: 30,
-                        color: AppColor.themeColor,
+                        color: AppColor.primaryColor,
                       ),
                       title: CustomText(
                         text: 'Terms of Service',
@@ -97,7 +100,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                       trailing: Icon(
                         Icons.arrow_forward_ios_outlined,
-                        color: AppColor.themeColor,
+                        color: AppColor.primaryColor,
                       ),
                     ),
                   ),
@@ -107,10 +110,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       Get.toNamed(AppRoutes.aboutUsScreen);
                     },
                     child: ListTile(
-                      leading: Icon(
-                        Icons.question_answer,
-                        size: 30,
-                        color: AppColor.themeColor,
+                      leading: SvgPicture.asset(
+                        AppImage.aboutUsIconUrl,
+                        height: 32.h,
+                        width: 32.w,
                       ),
                       title: CustomText(
                         text: 'About Us',
@@ -119,7 +122,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios_outlined,
-                        color: AppColor.themeColor,
+                        color: AppColor.primaryColor,
                       ),
                     ),
                   ),

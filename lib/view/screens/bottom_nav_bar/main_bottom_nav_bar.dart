@@ -38,7 +38,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
             ),
             child: NavigationBar(
               // height: 40,
-              backgroundColor: AppColor.themeColor,
+              backgroundColor: AppColor.primaryColor,
               labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
               // animationDuration:Duration(seconds: 1) ,
               // indicatorShape: CircleBorder(eccentricity: .1),
@@ -49,9 +49,9 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
                 });
               },
               destinations: [
-                NavigationDestination(icon: Icon(Icons.home_outlined,size: 25.h,color: _selectedIndex ==0 ? AppColor.themeColor : Colors.white,), label: 'Home'),
-                NavigationDestination(icon: Icon(Icons.support_agent_outlined,size: 25.h,color: _selectedIndex ==1 ? AppColor.themeColor : Colors.white), label: 'Support'),
-                NavigationDestination(icon: Icon(Icons.person_outline,size: 25.h,color: _selectedIndex ==2 ? AppColor.themeColor : Colors.white), label: 'Profile'),
+                NavigationDestination(icon: Icon(Icons.home_outlined,size: 25.h,color: _selectedIndex ==0 ? AppColor.primaryColor : Colors.white,), label: 'Home'),
+                NavigationDestination(icon: Icon(Icons.support_agent_outlined,size: 25.h,color: _selectedIndex ==1 ? AppColor.primaryColor : Colors.white), label: 'Support'),
+                NavigationDestination(icon: Icon(Icons.person_outline,size: 25.h,color: _selectedIndex ==2 ? AppColor.primaryColor : Colors.white), label: 'Profile'),
               ],
             ),
           ),

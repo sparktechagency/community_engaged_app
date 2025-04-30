@@ -3,7 +3,7 @@ import 'package:community_engaged_app/utils/app_colors.dart';
 
 
 ///A horizontal line step counter used for sign up screen for every step it will complete
-///1/3 step of this line with themeColor if the user complete the three step
+///1/3 step of this line with primaryColor if the user complete the three step
 ///signUp it will fill the full color
 class StepProgressBar extends StatelessWidget {
   final int currentStep; // 1, 2, or 3
@@ -23,7 +23,7 @@ class StepProgressBar extends StatelessWidget {
               height: 5,
               width: fullWidth,
               decoration: BoxDecoration(
-                color: AppColor.themeColor.withOpacity(.5),
+                color: AppColor.primaryColor.withOpacity(.5),
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
@@ -32,7 +32,7 @@ class StepProgressBar extends StatelessWidget {
               height: 5,
               width: stepWidth,
               decoration: BoxDecoration(
-                color: AppColor.themeColor,
+                color: AppColor.primaryColor,
                 borderRadius: BorderRadius.circular(16),
               ),
             ),

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:community_engaged_app/helpers/image_picker_helper.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_photo_picker_bottom_sheet.dart';
 import 'package:community_engaged_app/view/widgets/custom_pop_up_widget.dart';
@@ -44,7 +45,12 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(text: 'Take Your Picture',color: Colors.black,fontWeight: FontWeight.bold,fontsize: 20,),
+        title: CustomText(
+          text: 'Take Your Picture',
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontsize: 20,
+        ),
 
         centerTitle: true,
       ),
@@ -57,27 +63,16 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
               SizedBox(height: 20.h),
               CircleAvatar(
                 radius: 80.r,
+                backgroundColor: _image == null ? Colors.grey : null,
                 backgroundImage: _image != null ? FileImage(_image!) : null,
               ),
               SizedBox(height: 20.h),
-              Padding(
-                padding: const EdgeInsets.only(left: 68, right: 68),
-                child: CustomElevatedButtonWidget(
-                  buttonName: 'Take Picture',
-                  onTapNext: () {
-                    customPhotoPickerBottomSheet(
-                      context: context,
-                      onGalleryTap: () => _getPhotoFromGallery(),
-                      onCameraTap: () => _getPhotoFromCamera(),
-                    );
-                  },
-                ),
-              ),
-              SizedBox(height: 150.h),
-              CustomElevatedButtonWidget(
-                buttonName: 'Sign Up',
-                onTapNext: () async {
-                   await customPopUpWidget(
+              CustomButton(title: 'Take Picture', onpress: (){},width: 200.w,),
+              SizedBox(height: 238.h),
+              CustomButton(
+                title: 'Sign Up',
+                onpress: () async {
+                  await customPopUpWidget(
                     context: context,
                     title: 'Complete Signup',
                     subtitle: 'Do you want to Signup with Referral code?',

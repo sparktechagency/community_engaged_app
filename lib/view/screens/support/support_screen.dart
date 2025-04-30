@@ -42,17 +42,17 @@ class _SupportScreenState extends State<SupportScreen> {
             ),
             SizedBox(height: 16.h),
             Stack(
-              alignment: Alignment(0, -1.19),
+              alignment: Alignment(0, -1.38),
               children: [
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(8),
-                  height: 150.h,
+                  height: 123.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: AppColor.themeColor,
+                      color: AppColor.primaryColor,
                       width: 3,
                     ),
                   ),
@@ -71,14 +71,14 @@ class _SupportScreenState extends State<SupportScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                    Container(
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: AppColor.themeColor,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
+                  //   Container(
+                  //   width: 10,
+                  //   height: 10,
+                  //   decoration: BoxDecoration(
+                  //     color: AppColor.primaryColor,
+                  //     shape: BoxShape.circle,
+                  //   ),
+                  // ),
                   SizedBox(width: 8.w),
                   CustomText(
                     text: 'Support',
@@ -87,14 +87,14 @@ class _SupportScreenState extends State<SupportScreen> {
                     color: Colors.black,
                   ),
                 SizedBox(width: 8.w),
-                Container(
-                  width: 10,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: AppColor.themeColor,
-                    shape: BoxShape.circle,
-                  ),
-                ),
+                // Container(
+                //   width: 10,
+                //   height: 10,
+                //   decoration: BoxDecoration(
+                //     color: AppColor.primaryColor,
+                //     shape: BoxShape.circle,
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -102,14 +102,14 @@ class _SupportScreenState extends State<SupportScreen> {
         ),
         Container(
           alignment: Alignment.center,
-          height: 90,
-          width: 220,
+          height: 77.h,
+          width: 267.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(16),
               bottomRight: Radius.circular(16),
             ),
-            color: AppColor.themeColor,
+            color: AppColor.primaryColor,
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),

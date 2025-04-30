@@ -20,15 +20,21 @@ Future<bool?> customPopUpWidget({
       return AlertDialog(
         actionsAlignment: MainAxisAlignment.spaceEvenly,
         alignment: Alignment.center,
-        // title: Text(title, style: TextStyle(color: AppColor.themeColor)),
-        title: CustomText(text: title,fontWeight: FontWeight.bold,fontsize: 18.sp,),
-        // content: Text(subtitle),
-        content: CustomText(text: subtitle,textOverflow: TextOverflow.fade,fontWeight: FontWeight.w500,),
+        title: CustomText(
+          text: title,
+          fontWeight: FontWeight.bold,
+          fontsize: 20.sp,
+        ),
+        content: CustomText(
+          text: subtitle,
+          textOverflow: TextOverflow.fade,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
         actions: [
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              // fixedSize: Size(25, 15)
-              side: BorderSide(color: AppColor.themeColor),
+              side: BorderSide(color: AppColor.primaryColor),
             ),
             onPressed: () {
               Get.back();
@@ -36,13 +42,11 @@ Future<bool?> customPopUpWidget({
             },
             child: Text(
               firstButton!,
-              style: TextStyle(color: AppColor.themeColor),
+              style: TextStyle(color: AppColor.primaryColor),
             ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              // fixedSize: Size(25, 15)
-              //   side: BorderSide(color: AppColor.themeColor)
               backgroundColor: AppColor.textButtonColor,
               foregroundColor: AppColor.cardColorE9F2F9,
             ),

@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:community_engaged_app/helpers/image_picker_helper.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_photo_picker_bottom_sheet.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
-import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
 import 'package:community_engaged_app/view/widgets/text_field_for_this_project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,31 +59,60 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding:  EdgeInsets.all(24.r),
           child: Column(
             children: [
               SizedBox(height: 16.h),
               Center(
                 child: Stack(
+                  alignment: Alignment.bottomCenter,
                   children: [
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundImage:
-                          _updatePic != null
-                              ? FileImage(_updatePic!)
-                              : AssetImage(AppImage.splashScreenLogo),
+                    Container(
+                      height: 90.h,
+                      width: 90.w,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        shape: BoxShape.circle,
+                      ),
+                      child: ClipOval(
+                        child: _updatePic != null
+                            ? Image.file(
+                          _updatePic!,
+                          width: 90.w,
+                          height: 90.h,
+                          fit: BoxFit.cover,
+                        )
+                            : Image.asset(
+                          AppImage.splashScreenLogo,
+                          width: 90.w,
+                          height: 90.h,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                      ,
                     ),
                     GestureDetector(
                       onTap: () {
                         customPhotoPickerBottomSheet(
                           context: context,
                           onGalleryTap: () => _getPhotoFromGallery(),
-                          onCameraTap: () => _getPhotoFromGallery(),
+                          onCameraTap: () => _getPhotoFromCamera(),
                         );
                       },
-                      child: Icon(
-                        Icons.add_a_photo_outlined,
-                        // color: AppColor.cardColorE9F2F9,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(.1),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(200.r),
+                            bottomRight: Radius.circular(200.r),
+                          ),
+                        ),
+                        height: 39.h,
+                        width: 84.w,
+                        child: Icon(
+                          Icons.add_a_photo_outlined,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -122,13 +151,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               _buttonForUploadNid('NID Front.'),
               SizedBox(height: 8.h),
               _buttonForUploadNid('NID Back.'),
-
               SizedBox(height: 32.h),
-
-              CustomElevatedButtonWidget(
-                buttonName: 'Update',
-                onTapNext: () {},
-              ),
+              CustomButton(title: 'Update', onpress: () {}),
             ],
           ),
         ),
@@ -144,7 +168,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             fixedSize: Size.fromWidth(double.maxFinite),
-            backgroundColor: AppColor.themeColor,
+            backgroundColor: AppColor.primaryColor,
             foregroundColor: AppColor.cardColorE9F2F9,
           ),
           onPressed: () {},

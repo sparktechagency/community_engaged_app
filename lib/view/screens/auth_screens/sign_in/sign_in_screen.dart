@@ -1,11 +1,15 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
+import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -40,7 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     padding: EdgeInsets.only(left: 8.h),
                     child: Icon(
                       Icons.email_outlined,
-                      color: AppColor.themeColor.withOpacity(.5),
+                      color: AppColor.primaryColor.withOpacity(.5),
                     ),
                   ),
                 ),
@@ -49,13 +53,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   controller: _passwordTEController,
                   hintText: 'Enter Password',
                   isPassword: true,
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.only(left: 8.h),
-                    child: Icon(
-                      Icons.key_outlined,
-                      color: AppColor.themeColor.withOpacity(.5),
-                    ),
-                  ),
+                  suffixIconColor: Colors.black,
+                  prefixIcon:Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: SvgPicture.asset(AppImage.keyIconUrl),
+                  )
                 ),
                 SizedBox(height: 8.h),
                 Row(
@@ -65,32 +67,36 @@ class _SignInScreenState extends State<SignInScreen> {
                       onTap: () {
                         Get.toNamed(AppRoutes.emailVerificationScreen);
                       },
-                      child: Text(
-                        'Forget  password',
-                        style: TextStyle(color: AppColor.textButtonColor),
-                      ),
+                      // child: Text(
+                      //   'Forget  password?',
+                      //   style: TextStyle(color: AppColor.textButtonColor),
+                      // ),
+                      child: CustomText(text: 'Forget Password?',color: AppColor.textButtonColor,fontWeight: FontWeight.bold,),
                     ),
                   ],
                 ),
                 SizedBox(height: 32.h),
-                CustomElevatedButtonWidget(
-                  buttonName: "Let's Go",
-                  onTapNext: _onTapSignInButton,
-                ),
+                // CustomElevatedButtonWidget(
+                //   buttonName: "Let's Go",
+                //   onTapNext: _onTapSignInButton,
+                // ),
+                CustomButton(title: "Let's Go", onpress: _onTapSignInButton,),
                 SizedBox(height: 16.h),
                 RichText(
                   text: TextSpan(
-                    text: "Don't have an account?  ",
+                    text:"Don't have an account?  ",
                     style: TextStyle(
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.bold,
                       color: Colors.black54,
+                      fontFamily: 'Outfit'
                     ),
                     children: [
                       TextSpan(
                         text: "Sign Up",
                         style: TextStyle(
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.bold,
                           color: Colors.red,
+                          fontFamily: 'Outfit'
                         ),
                         recognizer:
                             TapGestureRecognizer()..onTap = _onTapSignupButton,

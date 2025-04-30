@@ -14,40 +14,28 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About us', style: TextStyle(fontWeight: FontWeight.w500)),
+        title: CustomText(text: 'About us',fontWeight:FontWeight.bold,fontsize: 22.sp,color: Colors.black, ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body:Padding(
+        padding:  EdgeInsets.all(24.r),
         child: Column(
           children: [
+            CustomText(
+              text: '''
+Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.
 
-            CustomText(
-              text:
-                  'Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.',
+Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.
+
+Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.
+''',
               color: Colors.black,
-              textOverflow: TextOverflow.fade,
+              fontsize: 18.sp,
+              textOverflow: TextOverflow.visible,
               textAlign: TextAlign.start,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
-            SizedBox(height: 16.h),
-            CustomText(
-              text:
-              'Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.',
-              color: Colors.black,
-              textOverflow: TextOverflow.fade,
-              textAlign: TextAlign.start,
-              fontWeight: FontWeight.w500,
-            ),
-            SizedBox(height: 16.h),
-            CustomText(
-              text:
-              'Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.',
-              color: Colors.black,
-              textOverflow: TextOverflow.fade,
-              textAlign: TextAlign.start,
-              fontWeight: FontWeight.w500,
-            ),
+
           ],
         ),
       ),

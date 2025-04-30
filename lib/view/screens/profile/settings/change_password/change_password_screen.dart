@@ -1,6 +1,7 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
@@ -78,12 +79,21 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ],
                 ),
                 SizedBox(height: 32.h),
-                CustomElevatedButtonWidget(
-                  buttonName: "Update Password",
-                  onTapNext: () {
+                CustomButton(
+
+                  title: 'Update Password',
+                  // loading: true,
+                  onpress: () {
                     if (_formKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Password Change complete')),
+                        SnackBar(
+                          content: CustomText(
+                            text: 'Update password complete',
+                            fontWeight: FontWeight.w900,
+                            textAlign: TextAlign.start,
+                            color: Colors.white,
+                          ),
+                        ),
                       );
                     }
                   },

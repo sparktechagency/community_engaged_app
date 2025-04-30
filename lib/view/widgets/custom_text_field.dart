@@ -26,6 +26,7 @@ class CustomTextField extends StatefulWidget {
   final double? borderRadio;
   final VoidCallback? onTap;
   final ValueChanged<String>? onChanged;
+  final Color? suffixIconColor;
 
 
   const CustomTextField(
@@ -48,7 +49,7 @@ class CustomTextField extends StatefulWidget {
         this.hintextSize,
         this.labelText,
         this.isPassword = false,
-        this.readOnly = false, this.borderRadio, this.onTap, this.onChanged});
+        this.readOnly = false, this.borderRadio, this.onTap, this.onChanged, this.suffixIconColor});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -102,11 +103,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
       cursorColor: Colors.black,
       obscureText: widget.isPassword ? obscureText : false,
-      style: TextStyle(color: widget.hintextColor ?? Colors.black, fontSize: widget.hintextSize ?? 12.h),
+      style: TextStyle(color: widget.hintextColor ?? Colors.black, fontSize: widget.hintextSize ?? 14.sp),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(
               horizontal: widget.contentPaddingHorizontal ?? 20.w,
-              vertical: widget.contentPaddingVertical ?? 10.h),
+              vertical: widget.contentPaddingVertical ?? 18.h),
           fillColor: Colors.white,
           filled: true,
           prefixIcon: widget.prefixIcon,
@@ -120,7 +121,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           prefixIconConstraints: BoxConstraints(minHeight: 24.w, minWidth: 24.w),
           labelText: widget.labelText,
           hintText: widget.hintText,
-          hintStyle: TextStyle(color: widget.hintextColor ?? Colors.black, fontSize: widget.hintextSize ?? 12.h,fontWeight: FontWeight.w400),
+          hintStyle: TextStyle(color: widget.hintextColor ?? Colors.black, fontSize: widget.hintextSize ?? 14.h,fontWeight: FontWeight.bold,fontFamily: 'Outfit'),
           focusedBorder: focusedBorder(),
           enabledBorder: enabledBorder(),
           errorBorder: errorBorder(),
@@ -131,30 +132,30 @@ class _CustomTextFieldState extends State<CustomTextField> {
   }
 
   _suffixIcon(IconData icon) {
-    return Padding(padding: const EdgeInsets.all(12.0), child: Icon(icon,color:AppColor.themeColor));
+    return Padding(padding:  EdgeInsets.all(12.0), child: Icon(icon,color:widget.suffixIconColor));
   }
 
   OutlineInputBorder focusedBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular( widget.borderRadio?.r ?? 16.r),
+      borderRadius: BorderRadius.circular( widget.borderRadio?.r ?? 100.r),
       borderSide:BorderSide(
-          color: widget.borderColor ??AppColor.themeColor
+          color: widget.borderColor ??AppColor.primaryColor
       ),
     );
   }
 
   OutlineInputBorder enabledBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(widget.borderRadio?.r ?? 16.r),
+      borderRadius: BorderRadius.circular(widget.borderRadio?.r ?? 100.r),
       borderSide:BorderSide(
-          color: widget.borderColor ?? AppColor.themeColor
+          color: widget.borderColor ?? AppColor.primaryColor
       ),
     );
   }
 
   OutlineInputBorder errorBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(widget.borderRadio?.r ?? 16.r),
+      borderRadius: BorderRadius.circular(widget.borderRadio?.r ?? 100.r),
       borderSide: const BorderSide(
           color: Colors.red,width: 0.5
       ),

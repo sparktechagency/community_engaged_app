@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_pin_code_text_field.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
@@ -13,21 +14,11 @@ import 'package:get/get_core/src/get_main.dart';
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({super.key});
 
-
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
-  // int _start = 30;
-  // late Timer _timer;
-  // bool _canResend = false;
-  //
-  // @override
-  // void initState() {
-  //   _startTimer();
-  //   super.initState();
-  // }
   Timer? _timer;
   int _start = 0;
 
@@ -53,20 +44,23 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     return '${minutes.toString()}:${seconds.toString().padLeft(2, '0')}';
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     final bool isWaiting = _start > 0;
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(text: 'OTP Verification',color: Colors.black,fontWeight: FontWeight.bold,fontsize: 20,),
+        title: CustomText(
+          text: 'OTP Verification',
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontsize: 20.sp,
+        ),
 
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(24.r),
           child: Column(
             children: [
               SizedBox(height: 20.h),
@@ -77,30 +71,32 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Didn't get the code?"),
-                  isWaiting
-                      ? Text('Resend code in $timerText')
-                      : GestureDetector(
-                    onTap: () {
-                      isWaiting ? null : startTimer();
-                    },
-                    child: Text(
-                      'Resend',
-                      style: TextStyle(
-                        color: AppColor.textButtonColor,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                  CustomText(
+                    text: "Didn't get the code?",
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
                   ),
+                  isWaiting
+                      ? CustomText(
+                        text: 'Resend code in $timerText',
+                        fontWeight: FontWeight.bold,
+                      )
+                      : GestureDetector(
+                        onTap: () {
+                          isWaiting ? null : startTimer();
+                        },
+                        child: CustomText(
+                          text: 'Resend',
+                          color: AppColor.textButtonColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                 ],
               ),
               SizedBox(height: 32.h),
-              CustomElevatedButtonWidget(
-                buttonName: "Verified",
-                onTapNext: () {
-                  Get.toNamed(AppRoutes.resetPasswordScreen);
-                },
-              ),
+              CustomButton(title: 'Verified', onpress: (){
+                Get.toNamed(AppRoutes.resetPasswordScreen);
+              })
             ],
           ),
         ),

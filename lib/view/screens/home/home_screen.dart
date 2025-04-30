@@ -7,6 +7,7 @@ import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/profile_picture_with_referral%20_code_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:month_year_picker/month_year_picker.dart';
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding:  EdgeInsets.all(24.r),
           child: Column(
             children: [
               Row(
@@ -64,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 16.h,
                             fontWeight: FontWeight.w500,
                           ),
-                          backgroundColor: AppColor.themeColor,
+                          backgroundColor: AppColor.primaryColor,
                           foregroundColor: Colors.white,
                         ),
                         onPressed: () {},
@@ -85,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _cardForProfileBio(),
               SizedBox(height: 16.h),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomMiniCardWidget(
                     context: context,
@@ -93,7 +95,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     buttonName: 'Withdraw Now',
                     onTap: () {},
                   ),
-                  SizedBox(width: 4.w),
                   CustomMiniCardWidget(
                     context: context,
                     cardTitle: 'Referral Users',
@@ -109,14 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Text(
-                  //   'Overview',
-                  //   style: TextStyle(
-                  //     fontSize: 20,
-                  //     fontWeight: FontWeight.w600,
-                  //     color: AppColor.themeColor,
-                  //   ),
-                  // ),
                   CustomText(
                     text: 'Overview',
                     fontsize: 20,
@@ -130,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Icon(
                           Icons.calendar_month_outlined,
-                          color: AppColor.themeColor,
+                          color: AppColor.primaryColor,
                         ),
                         Text(
                           _selectedDate == null
@@ -141,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: AppColor.themeColor,
+                            color: AppColor.primaryColor,
                           ),
                         ),
                       ],
@@ -254,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         gradient: LinearGradient(
-          colors: [AppColor.themeColor, AppColor.themeColor.withOpacity(.3)],
+          colors: [AppColor.primaryColor, Color(0xffD4E7B8)],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
@@ -273,20 +266,16 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             SizedBox(height: 8.h),
-            Image.asset(
-              AppImage.splashScreenVerticalLineLogo,
-              alignment: Alignment.centerLeft,
-              height: 5.h,
-              // width: 30.w,
-            ),
+            SvgPicture.asset(AppImage.verticalLogoUrl,height: 3.h,width: 105.w,),
             SizedBox(height: 8.h),
             CustomText(
               text:
                   'Join us in creating a brighter future. Your donations empower those in need, bringing hope and change to lives.',
               textAlign: TextAlign.start,
               textOverflow: TextOverflow.fade,
-              fontsize: 16,
+              fontsize: 16.sp,
               color: Colors.white,
+              fontWeight: FontWeight.w700,
             ),
           ],
         ),

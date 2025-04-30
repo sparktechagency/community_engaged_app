@@ -1,5 +1,5 @@
 import 'package:community_engaged_app/utils/app_images.dart';
-import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +21,8 @@ class _ErrorScreenState extends State<ErrorScreen> {
             SizedBox(height: 80.h),
             Image.asset(AppImage.errorImageUrl),
             SizedBox(height: 24.h),
-            CustomElevatedButtonWidget(buttonName: 'Re-load', onTapNext: () {}),
+            // CustomElevatedButtonWidget(buttonName: 'Re-load', onTapNext: () {}),
+            CustomButton(title: 'Re-load', onpress: () {}),
           ],
         ),
       ),

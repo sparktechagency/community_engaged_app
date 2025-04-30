@@ -24,18 +24,16 @@ class CustomMiniCardWidget extends StatelessWidget {
   final String buttonName;
   final void Function()? onTap;
 
-  // final Size buttonWidth;
-  // final Size buttonHeight;
+
 
   @override
   Widget build(BuildContext context) {
-    final cardWidget = MediaQuery.of(context).size.width;
     return Stack(
       alignment: Alignment.center,
       children: [
         Container(
           height: 140.h,
-          width: cardWidget * 0.44,
+          width: 170.w,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
           child: SvgPicture.asset(AppImage.customCard, fit: BoxFit.fill),
         ),
@@ -59,8 +57,8 @@ class CustomMiniCardWidget extends StatelessWidget {
               onTap: onTap,
               child: Container(
                 alignment: Alignment.center,
-                height: 35.h,
-                width: 120.w,
+                height: 34.h,
+                width: 114.w,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),

@@ -15,7 +15,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
     return Scaffold(
       appBar: AppBar(
         title: CustomText(
-          text: 'Support',
+          text: 'Privacy Policy',
           fontsize: 22.sp,
           fontWeight: FontWeight.bold,
           color: Colors.black,
@@ -23,35 +23,24 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:  EdgeInsets.all(24.r),
         child: Column(
           children: [
             CustomText(
-              text:
-                  'Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.',
+              text: '''
+Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.
+
+Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.
+
+Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.
+''',
               color: Colors.black,
-              textOverflow: TextOverflow.fade,
+              fontsize: 18.sp,
+              textOverflow: TextOverflow.visible,
               textAlign: TextAlign.start,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
-            SizedBox(height: 16.h),
-            CustomText(
-              text:
-                  'Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.',
-              color: Colors.black,
-              textOverflow: TextOverflow.fade,
-              textAlign: TextAlign.start,
-              fontWeight: FontWeight.w500,
-            ),
-            SizedBox(height: 16.h),
-            CustomText(
-              text:
-                  'Lorem ipsum dolor sit amet consectetur. Enim massa aenean ac odio leo habitasse tortor tempor. Ut id urna odio dui leo congue. Ultrices pharetra ornare nam faucibus. Integer id varius consectetur non.',
-              color: Colors.black,
-              textOverflow: TextOverflow.fade,
-              textAlign: TextAlign.start,
-              fontWeight: FontWeight.w500,
-            ),
+
           ],
         ),
       ),

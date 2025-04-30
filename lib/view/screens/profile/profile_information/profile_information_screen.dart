@@ -2,6 +2,7 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/text_field_for_this_project.dart';
@@ -35,7 +36,7 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding:  EdgeInsets.all(24.r),
           child: Column(
             children: [
               SizedBox(height: 30.h),
@@ -58,11 +59,17 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
               TextFieldForThisProject(titleName: 'Address', hintText: 'flkjasohtfoih address'),
 
               SizedBox(height: 8.h),
-              CustomElevatedButtonWidget(buttonName: 'NidFront.pdf', onTapNext: (){}),
+              // CustomElevatedButtonWidget(buttonName: 'NidFront.pdf', onTapNext: (){}),
+              CustomButton(title: 'NidFront.pdf', onpress: (){},height: 42.h,),
               SizedBox(height: 2.h),
-              CustomElevatedButtonWidget(buttonName: 'NidBack.pdf', onTapNext: (){}),
+              // CustomElevatedButtonWidget(buttonName: 'NidBack.pdf', onTapNext: (){}),
+              CustomButton(title: 'NidBack.pdf', onpress: (){},height: 42.h,),
+
               SizedBox(height: 32.h,),
-              CustomElevatedButtonWidget(buttonName: 'Edit Profile', onTapNext: (){
+              // CustomElevatedButtonWidget(buttonName: 'Edit Profile', onTapNext: (){
+              //   Get.toNamed(AppRoutes.editProfileScreen);
+              // }),
+              CustomButton(title: 'Edit Profile', onpress: (){
                 Get.toNamed(AppRoutes.editProfileScreen);
               })
             ],

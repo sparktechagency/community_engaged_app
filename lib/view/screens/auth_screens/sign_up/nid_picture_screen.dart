@@ -4,6 +4,7 @@ import 'package:community_engaged_app/helpers/image_picker_helper.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_photo_picker_bottom_sheet.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
@@ -56,9 +57,15 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: CustomText(text: 'NID Picture',color: Colors.black,fontWeight: FontWeight.bold,fontsize: 20,),
+      appBar: AppBar(
+        title: CustomText(
+          text: 'NID Picture',
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontsize: 20.sp,
+        ),
 
-      centerTitle: true,
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -72,11 +79,9 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
               SizedBox(height: 20.h),
               _takingBackSideNidPicture(context),
               SizedBox(height: 32.h),
-              CustomElevatedButtonWidget(
-                buttonName: 'Next',
-                onTapNext: () {
-                  Get.toNamed(AppRoutes.takeYourPictureScreen);
-                },
+              CustomButton(
+                title: 'Next',
+                onpress: () => Get.toNamed(AppRoutes.takeYourPictureScreen),
               ),
             ],
           ),
@@ -96,19 +101,22 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
       },
       child:
           _backSideImage != null
-              ? Container(
+              ?  Container(
+            height: 200,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.file(
+                _backSideImage!,
                 height: 200,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Image.file(
-                  _backSideImage!,
-                  height: 200,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              )
+                fit: BoxFit.cover,
+              ),
+            ),
+          )
               : _uploadNidPictureCard('Upload back side Picture here'),
     );
   }
@@ -122,22 +130,24 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
           onCameraTap: () => _getImageFromCamera(isFrontSide: true),
         );
       },
-      child:
-          _frontSideImage != null
-              ? Container(
-                height: 200,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Image.file(
-                  _frontSideImage!,
-                  height: 200,
-                  width: double.infinity,
-                  fit: BoxFit.contain,
-                ),
-              )
-              : _uploadNidPictureCard('Upload font side Picture here'),
+      child: _frontSideImage != null
+          ? Container(
+        height: 200,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image.file(
+            _frontSideImage!,
+            height: 200,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+        ),
+      )
+          : _uploadNidPictureCard('Upload front side Picture here'),
     );
   }
 
@@ -148,15 +158,16 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
       height: 200,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColor.themeColor.withOpacity(.2),
+        color: AppColor.primaryColor.withOpacity(.2),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.add, color: AppColor.themeColor, size: 50),
+          Icon(Icons.add, color: AppColor.primaryColor, size: 50),
           SizedBox(height: 4.h),
-          Text(name, style: TextStyle(color: Colors.grey)),
+          // Text(name, style: TextStyle(color: Colors.grey)),
+          CustomText(text: name, color: Colors.black, fontsize: 16.sp),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
@@ -26,14 +27,14 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
           text: 'E-mail Verification',
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontsize: 20,
+          fontsize: 20.sp,
         ),
 
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(24.r),
           child: Column(
             children: [
               SizedBox(height: 20.h),
@@ -47,15 +48,12 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   padding: EdgeInsets.only(left: 8.h),
                   child: Icon(
                     Icons.email_outlined,
-                    color: AppColor.themeColor.withOpacity(.5),
+                    color: AppColor.primaryColor.withOpacity(.5),
                   ),
                 ),
               ),
               SizedBox(height: 32.h),
-              CustomElevatedButtonWidget(
-                buttonName: "Send OTP",
-                onTapNext: _onTapOtpVerification,
-              ),
+              CustomButton(title: 'Send OTP', onpress: _onTapOtpVerification),
             ],
           ),
         ),

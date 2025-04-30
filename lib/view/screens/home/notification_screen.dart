@@ -39,7 +39,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           height: 35.h,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: AppColor.themeColor,
+                            color: AppColor.primaryColor,
                           ),
                         ),
                         Icon(Icons.notifications,color: AppColor.cardColorE9F2F9,)

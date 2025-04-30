@@ -16,11 +16,11 @@ class CustomElevatedButtonWidget extends StatelessWidget {
       onPressed: onTapNext,
       style: ElevatedButton.styleFrom(
         fixedSize: Size.fromWidth(double.maxFinite),
-        backgroundColor: AppColor.themeColor,
+        backgroundColor: AppColor.primaryColor,
         foregroundColor: Colors.white,
         padding: EdgeInsets.symmetric(vertical: 12.h),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(100.r),
         ),
       ),
       child: CustomText(text: buttonName,fontsize: 16.sp,fontWeight: FontWeight.bold,color: Colors.white,),

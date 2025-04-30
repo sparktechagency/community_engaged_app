@@ -21,7 +21,7 @@ class TextFieldForThisProject extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Text(titleName, style: TextStyle(fontSize: 16.sp)),
-        CustomText(text: titleName,fontsize: 16.sp,color: Colors.black,),
+        CustomText(text: titleName,fontsize: 16.sp,color: Colors.black,fontWeight: FontWeight.bold,),
         SizedBox(height: 2.h),
         CustomTextField(controller: controller ?? TextEditingController(), hintText: hintText),
       ],

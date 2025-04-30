@@ -1,4 +1,5 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/step_progress_bar.dart';
@@ -26,7 +27,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(text: 'Sign Up',color: Colors.black,fontWeight: FontWeight.bold,fontsize: 20,),
+        title: CustomText(
+          text: 'Sign Up',
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontsize: 20,
+        ),
 
         centerTitle: true,
       ),
@@ -54,31 +60,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: 8.h),
 
                 TextFieldForThisProject(
-                  controller: _nameTEController,
+                  controller: _emailTEController,
                   titleName: 'E-mail',
                   hintText: 'Email address',
                 ),
                 SizedBox(height: 8.h),
 
                 TextFieldForThisProject(
-                  controller: _nameTEController,
+                  controller: _passwordTEController,
                   titleName: 'Password',
                   hintText: 'Password',
                 ),
-                SizedBox(height: 8.h),
+                SizedBox(height: 18.h),
 
                 TextFieldForThisProject(
-                  controller: _nameTEController,
+                  controller: _addressTEController,
                   titleName: 'Address',
                   hintText: 'Your address',
                 ),
-                SizedBox(height: 16.h),
-                CustomElevatedButtonWidget(
-                  buttonName: "Confirm",
-                  // onTapNext: _onTapSignInButton,
-                  onTapNext: () {
-                    Get.toNamed(AppRoutes.nidPictureScreen);
-                  },
+                SizedBox(height: 40.h),
+                CustomButton(
+                  title: 'Confirm',
+                  onpress: () => Get.toNamed(AppRoutes.nidPictureScreen),
                 ),
               ],
             ),
@@ -104,5 +107,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _passwordTEController.dispose();
   }
 }
-
-

@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
                 Icon(
                   Icons.notifications,
                   size: 30.h,
-                  color: AppColor.themeColor,
+                  color: AppColor.primaryColor,
                 ),
                 Container(
                   width: 20.w,

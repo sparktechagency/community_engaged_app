@@ -48,8 +48,8 @@ class CustomText extends StatelessWidget {
         style: TextStyle(
           fontSize: fontsize ?? 14.h,
           fontFamily:'Outfit',
-          fontWeight:fontWeight == null ? FontWeight.w400 : fontWeight ,
-          color: color ?? AppColor.themeColor,
+          fontWeight:fontWeight ?? FontWeight.w400   ,
+          color: color ?? AppColor.secondaryColor,
         ),
       ),
     );
