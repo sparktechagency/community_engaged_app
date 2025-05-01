@@ -8,12 +8,13 @@ class TextFieldForThisProject extends StatelessWidget {
     super.key,
     this.controller,
     required this.titleName,
-    required this.hintText,
+    required this.hintText,  this.readOnly=false,
   });
 
   final TextEditingController? controller;
   final String titleName;
   final String hintText;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class TextFieldForThisProject extends StatelessWidget {
         // Text(titleName, style: TextStyle(fontSize: 16.sp)),
         CustomText(text: titleName,fontsize: 16.sp,color: Colors.black,fontWeight: FontWeight.bold,),
         SizedBox(height: 2.h),
-        CustomTextField(controller: controller ?? TextEditingController(), hintText: hintText),
+        CustomTextField(controller: controller ?? TextEditingController(), hintText: hintText,readOnly: readOnly,),
       ],
     );
   }

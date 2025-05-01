@@ -16,27 +16,45 @@ class _ReferralUsersScreenState extends State<ReferralUsersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(text: 'Referral Users',fontWeight: FontWeight.bold,color: Colors.black,fontsize: 22.sp,),
-        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20,fontWeight: FontWeight.w600),
+        title: CustomText(
+          text: 'Referral Users',
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+          fontsize: 22.sp,
+        ),
+        titleTextStyle: TextStyle(
+          color: Colors.black,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
         centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
           itemCount: 20,
-            itemBuilder: (context,index){
-          return Container(
-            margin: EdgeInsets.only(bottom: 8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: AppColor.primaryColor.withOpacity(.2),
-            ),
-            child: ListTile(
-              leading: CircleAvatar(backgroundImage: AssetImage(AppImage.splashScreenLogo),radius: 26,),
-              title:CustomText(text: 'Jane Cooper',color: Colors.black,fontsize: 18.sp,textAlign: TextAlign.start,),
-            ),
-          );
-        }),
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(bottom: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: AppColor.primaryColor.withOpacity(.2),
+              ),
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(AppImage.splashScreenLogo),
+                  radius: 26,
+                ),
+                title: CustomText(
+                  text: 'Jane Cooper',
+                  color: Colors.black,
+                  fontsize: 18.sp,
+                  textAlign: TextAlign.start,
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,10 +1,9 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
-import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
-import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
+import 'package:community_engaged_app/view/widgets/profile_picture_with_referral%20_code_widget.dart';
 import 'package:community_engaged_app/view/widgets/text_field_for_this_project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +21,7 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
   final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _phoneTEController = TextEditingController();
   final TextEditingController _addressTEController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,48 +36,65 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:  EdgeInsets.all(24.r),
+          padding: EdgeInsets.all(24.r),
           child: Column(
             children: [
               SizedBox(height: 30.h),
               Center(
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundImage: AssetImage(AppImage.splashScreenLogo),
-                ),
+                child: ProfilePictureWithReferralCodeWidget()
               ),
               SizedBox(height: 16.h),
-              TextFieldForThisProject(titleName: 'Name', hintText: 'Your name'),
+              TextFieldForThisProject(titleName: 'Name',
+                  readOnly: true,
+                  hintText: 'Your name'),
               SizedBox(height: 2.h),
-
-              TextFieldForThisProject(titleName: 'E-mail', hintText: 'example@gmail.com'),
-
+              TextFieldForThisProject(
+                titleName: 'E-mail',
+                readOnly: true,
+                hintText: 'example@gmail.com',
+              ),
               SizedBox(height: 2.h),
-
-              TextFieldForThisProject(titleName: 'Phone No.', hintText: '05810-57070'),
+              TextFieldForThisProject(
+                titleName: 'Phone No.',
+                readOnly: true,
+                hintText: '05810-57070',
+              ),
               SizedBox(height: 2.h),
-              TextFieldForThisProject(titleName: 'Address', hintText: 'flkjasohtfoih address'),
-
+              TextFieldForThisProject(
+                titleName: 'Address',
+                readOnly: true,
+                hintText: 'Address',
+              ),
               SizedBox(height: 8.h),
-              // CustomElevatedButtonWidget(buttonName: 'NidFront.pdf', onTapNext: (){}),
-              CustomButton(title: 'NidFront.pdf', onpress: (){},height: 42.h,),
+              CustomButton(title: 'NidFront.jpg', onpress: () {
+                showDialog(context: context, builder: (context){
+                  return AlertDialog(
+                    content: Image.asset(AppImage.splashScreenLogo,fit: BoxFit.cover,),
+                  );
+                });
+              }, height: 42.h),
               SizedBox(height: 2.h),
-              // CustomElevatedButtonWidget(buttonName: 'NidBack.pdf', onTapNext: (){}),
-              CustomButton(title: 'NidBack.pdf', onpress: (){},height: 42.h,),
-
-              SizedBox(height: 32.h,),
-              // CustomElevatedButtonWidget(buttonName: 'Edit Profile', onTapNext: (){
-              //   Get.toNamed(AppRoutes.editProfileScreen);
-              // }),
-              CustomButton(title: 'Edit Profile', onpress: (){
-                Get.toNamed(AppRoutes.editProfileScreen);
-              })
+              CustomButton(title: 'NidBack.jpg', onpress: () {
+                showDialog(context: context, builder: (context){
+                  return AlertDialog(
+                    content: Image.asset(AppImage.splashScreenLogo,fit: BoxFit.cover,),
+                  );
+                });
+              }, height: 42.h),
+              SizedBox(height: 32.h),
+              CustomButton(
+                title: 'Edit Profile',
+                onpress: () {
+                  Get.toNamed(AppRoutes.editProfileScreen);
+                },
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
   @override
   void dispose() {
     _nameTEController.dispose();

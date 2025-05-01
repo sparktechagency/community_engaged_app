@@ -42,7 +42,7 @@ class _SupportScreenState extends State<SupportScreen> {
             ),
             SizedBox(height: 16.h),
             Stack(
-              alignment: Alignment(0, -1.38),
+              alignment: Alignment(0, -1.29),
               children: [
                 Container(
                   alignment: Alignment.center,
@@ -71,14 +71,14 @@ class _SupportScreenState extends State<SupportScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                  //   Container(
-                  //   width: 10,
-                  //   height: 10,
-                  //   decoration: BoxDecoration(
-                  //     color: AppColor.primaryColor,
-                  //     shape: BoxShape.circle,
-                  //   ),
-                  // ),
+                    Container(
+                    width: 10,
+                    height: 10,
+                    decoration: BoxDecoration(
+                      color: AppColor.primaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
                   SizedBox(width: 8.w),
                   CustomText(
                     text: 'Support',
@@ -87,14 +87,14 @@ class _SupportScreenState extends State<SupportScreen> {
                     color: Colors.black,
                   ),
                 SizedBox(width: 8.w),
-                // Container(
-                //   width: 10,
-                //   height: 10,
-                //   decoration: BoxDecoration(
-                //     color: AppColor.primaryColor,
-                //     shape: BoxShape.circle,
-                //   ),
-                // ),
+                Container(
+                  width: 10,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    color: AppColor.primaryColor,
+                    shape: BoxShape.circle,
+                  ),
+                ),
               ],
             ),
           ),

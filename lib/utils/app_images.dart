@@ -10,8 +10,11 @@ class AppImage{
   static const String verticalLogoUrl = '$_imagesBaseUrl/verticalLogo.svg';
   static const String keyIconUrl = '$_iconsBaseUrl/keyIcon.svg';
   static const String logOutIconUrl = '$_iconsBaseUrl/logout.svg';
-  static const String userIconUrl = '$_iconsBaseUrl/user-circle.svg';
+  static const String userIconUrl = '$_iconsBaseUrl/homeIcon2.svg';
   static const String settingsIconUrl = '$_iconsBaseUrl/settingsIcon.svg';
   static const String aboutUsIconUrl = '$_iconsBaseUrl/aboutUsIcon.svg';
+  static const String homeIconUrl = '$_iconsBaseUrl/Vector.svg';
+  static const String supportIconUrl = '$_iconsBaseUrl/supportIcon.svg';
+  static const String profileIconUrl = '$_iconsBaseUrl/personIcon.svg';
 
 }

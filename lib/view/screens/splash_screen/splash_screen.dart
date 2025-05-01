@@ -42,13 +42,13 @@ class _SplashScreenState extends State<SplashScreen> {
                   fontWeight: FontWeight.w900,
                   maxline: 2,
                   textAlign: TextAlign.start,
-                  fontsize: 48.sp,
+                  fontsize: 48.h,
                 ),
 
                 CustomText(
                   text:
                       'Join us in creating a brighter future. Your donations empower those in need, bringing hope and change to lives.',
-                  fontsize: 17.sp,
+                  fontsize: 17.h,
                   textOverflow: TextOverflow.fade,
                   textAlign: TextAlign.start,
                   fontWeight: FontWeight.bold,

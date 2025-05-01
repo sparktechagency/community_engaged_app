@@ -1,7 +1,9 @@
-import 'package:community_engaged_app/routes/export.dart';
-import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/routes/export.dart';
 
 class MainBottomNavBarScreen extends StatefulWidget {
   const MainBottomNavBarScreen({super.key});
@@ -11,53 +13,67 @@ class MainBottomNavBarScreen extends StatefulWidget {
 }
 
 class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
-  int _selectedIndex =0;
-  final List<Widget> _screens =[
+  int _selectedIndex = 0;
+
+  final List<Widget> _screens = [
     HomeScreen(),
     SupportScreen(),
     ProfileScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(32), // <-- Clip the NavigationBar itself
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 10.r,
-                  offset: Offset(0, 4),
+        padding: EdgeInsets.only(left: 24.r, right: 24.r, bottom: 20.r),
+        child: Container(
+          height: 60.h,
+          width: double.infinity,
+          padding: EdgeInsets.all(10.r),
+          decoration: BoxDecoration(
+            color: AppColor.primaryColor,
+            borderRadius: BorderRadius.circular(54.r),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(3, (index) {
+              final bool isSelected = _selectedIndex == index;
+
+              // Dynamic icon based on selection
+              final iconPath = index == 0
+                  ? AppImage.homeIconUrl
+                  : index == 1
+                  ? AppImage.supportIconUrl
+                  : AppImage.profileIconUrl;
+
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                },
+                child: Container(
+                  width: 50.r,
+                  height: 50.r,
+                  decoration: BoxDecoration(
+                    color: isSelected ? Colors.white : Colors.transparent,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      iconPath,
+                      color: isSelected ? AppColor.primaryColor : Colors.white,
+                      width: 28.w,
+                      height: 28.h,
+                    ),
+                  ),
                 ),
-              ],
-            ),
-            child: NavigationBar(
-              // height: 40,
-              backgroundColor: AppColor.primaryColor,
-              labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-              // animationDuration:Duration(seconds: 1) ,
-              // indicatorShape: CircleBorder(eccentricity: .1),
-              selectedIndex: _selectedIndex,
-              onDestinationSelected: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
-              destinations: [
-                NavigationDestination(icon: Icon(Icons.home_outlined,size: 25.h,color: _selectedIndex ==0 ? AppColor.primaryColor : Colors.white,), label: 'Home'),
-                NavigationDestination(icon: Icon(Icons.support_agent_outlined,size: 25.h,color: _selectedIndex ==1 ? AppColor.primaryColor : Colors.white), label: 'Support'),
-                NavigationDestination(icon: Icon(Icons.person_outline,size: 25.h,color: _selectedIndex ==2 ? AppColor.primaryColor : Colors.white), label: 'Profile'),
-              ],
-            ),
+              );
+            }),
           ),
         ),
       ),
-
     );
   }
 }

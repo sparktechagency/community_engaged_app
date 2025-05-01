@@ -28,7 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: [
             SizedBox(height: 30.h),
-            Center(child: ProfilePictureWithReferralCodeWidget()),
+            Center(child: ProfilePictureWithReferralCodeWidget(showReferralCode: true,)),
             SizedBox(height: 16.h),
             CustomText(
               text: 'Mohammed-Intellu',
@@ -86,10 +86,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontWeight: FontWeight.w600,
                   textAlign: TextAlign.start,
                 ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color: AppColor.primaryColor,
-                ),
+                // trailing: Icon(
+                //   Icons.arrow_forward_ios_outlined,
+                //   color: AppColor.primaryColor,
+                // ),
               ),
             ),
             Divider(),

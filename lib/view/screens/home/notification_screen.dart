@@ -15,10 +15,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Notifications',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-        ),
+        // title: Text(
+        //   'Notifications',
+        //   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+        // ),
+        title: CustomText(text: 'Notifications',fontsize: 22.sp,fontWeight: FontWeight.bold,color: Colors.black,),
         centerTitle: true,
       ),
       body: Padding(

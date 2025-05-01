@@ -6,10 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
-  const CustomAppBar({
-    super.key,
-  });
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,35 +17,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
         child: SvgPicture.asset(AppImage.homeLogo, fit: BoxFit.contain),
       ),
       actions: [
-        Padding(
-          padding: const EdgeInsets.only(top: 16, right: 8),
-          child: IconButton(
-            onPressed: () {
-              Get.toNamed(AppRoutes.notificationScreen);
-            },
-            icon: Stack(
-              alignment: Alignment(1, -1.5),
-              children: [
-                Icon(
-                  Icons.notifications,
-                  size: 30.h,
-                  color: AppColor.primaryColor,
-                ),
-                Container(
-                  width: 20.w,
-                  decoration: BoxDecoration(
-                    color: AppColor.textButtonColor,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Text(
-                    '01',
-                    style: TextStyle(color: AppColor.cardColorE9F2F9),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+       Padding(
+         padding:  EdgeInsets.only(right: 16.w),
+         child: IconButton(onPressed: (){
+           Get.toNamed(AppRoutes.notificationScreen);
+         }, icon: Badge.count(count: 18,child: Icon(Icons.notifications,color: AppColor.secondaryColor,size: 30.sp,),)),
+       )
       ],
     );
   }

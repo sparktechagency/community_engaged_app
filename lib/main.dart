@@ -15,7 +15,7 @@ void main() async {
   ]);
 
   runApp(
-    DevicePreview(enabled: true, builder: (context) => CommunityEngagedApp()),
+    DevicePreview(enabled: false, builder: (context) => CommunityEngagedApp()),
   );
 }
 
@@ -41,7 +41,8 @@ class CommunityEngagedApp extends StatelessWidget {
         getPages: AppRoutes.routes,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          appBarTheme: AppBarTheme(color: Colors.white),
+          appBarTheme: AppBarTheme(color: Colors.white,scrolledUnderElevation: 0),
+
         ),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,

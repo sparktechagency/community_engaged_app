@@ -7,6 +7,7 @@ import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_photo_picker_bottom_sheet.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
+import 'package:community_engaged_app/view/widgets/profile_picture_with_referral%20_code_widget.dart';
 import 'package:community_engaged_app/view/widgets/text_field_for_this_project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,22 +26,36 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController _addressTEController = TextEditingController();
 
   File? _updatePic;
+  File? _nidFrontPic;
+  File? _nidBackPic;
   ImagePickerHelper _imagePickerHelper = ImagePickerHelper();
 
-  Future<void> _getPhotoFromGallery() async {
+  Future<void> _getPhotoFromGallery(String type) async {
     final image = await _imagePickerHelper.pickFromGallery();
     if (image != null) {
       setState(() {
-        _updatePic = image;
+        if (type == 'front') {
+          _nidFrontPic = image;
+        } else if (type == 'back') {
+          _nidBackPic = image;
+        } else {
+          _updatePic = image;
+        }
       });
     }
   }
 
-  Future<void> _getPhotoFromCamera() async {
+  Future<void> _getPhotoFromCamera(String type) async {
     final image = await _imagePickerHelper.pickFromCamera();
     if (image != null) {
       setState(() {
-        _updatePic = image;
+        if (type == 'front') {
+          _nidFrontPic = image;
+        } else if (type == 'back') {
+          _nidBackPic = image;
+        } else {
+          _updatePic = image;
+        }
       });
     }
   }
@@ -59,7 +74,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:  EdgeInsets.all(24.r),
+          padding: EdgeInsets.all(24.r),
           child: Column(
             children: [
               SizedBox(height: 16.h),
@@ -67,36 +82,30 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
-                    Container(
-                      height: 90.h,
-                      width: 90.w,
-                      decoration: BoxDecoration(
-                        color: Colors.yellow,
-                        shape: BoxShape.circle,
-                      ),
+                    ProfilePictureWithReferralCodeWidget(
                       child: ClipOval(
-                        child: _updatePic != null
-                            ? Image.file(
-                          _updatePic!,
-                          width: 90.w,
-                          height: 90.h,
-                          fit: BoxFit.cover,
-                        )
-                            : Image.asset(
-                          AppImage.splashScreenLogo,
-                          width: 90.w,
-                          height: 90.h,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                      ,
+                        child:
+                            _updatePic != null
+                                ? Image.file(
+                                  _updatePic!,
+                                  width: 97.w,
+                                  height: 97.h,
+                                  fit: BoxFit.cover,
+                                )
+                                : Image.asset(
+                                  AppImage.splashScreenLogo,
+                                  width: 90.w,
+                                  height: 90.h,
+                                  fit: BoxFit.cover,
+                                ),
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
                         customPhotoPickerBottomSheet(
                           context: context,
-                          onGalleryTap: () => _getPhotoFromGallery(),
-                          onCameraTap: () => _getPhotoFromCamera(),
+                          onGalleryTap: () => _getPhotoFromGallery('profile'),
+                          onCameraTap: () => _getPhotoFromCamera('profile'),
                         );
                       },
                       child: Container(
@@ -108,7 +117,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           ),
                         ),
                         height: 39.h,
-                        width: 84.w,
+                        width: 88.w,
                         child: Icon(
                           Icons.add_a_photo_outlined,
                           color: Colors.white,
@@ -148,33 +157,43 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
 
               SizedBox(height: 8.h),
-              _buttonForUploadNid('NID Front.'),
+              NidPicUploadButton(
+                title: 'NID Front.',
+                onTap: () {
+                  customPhotoPickerBottomSheet(
+                    context: context,
+                    onGalleryTap: () => _getPhotoFromGallery('front'),
+                    onCameraTap: () => _getPhotoFromCamera('front'),
+                  );
+                },
+                child: Center(
+                  child: _nidFrontPic !=null ?Text(_nidFrontPic!.path) : Icon(Icons.upload, size: 30),
+                ),
+              ),
               SizedBox(height: 8.h),
-              _buttonForUploadNid('NID Back.'),
+              NidPicUploadButton(
+                title: 'NID Back.',
+                onTap: () {
+                  customPhotoPickerBottomSheet(
+                    context: context,
+                    onGalleryTap: () => _getPhotoFromGallery('back'),
+                    onCameraTap: () => _getPhotoFromCamera('back'),
+                  );
+                },
+                child: Center(
+                  child: _nidBackPic !=null ?Text(_nidBackPic!.path) : Icon(Icons.upload, size: 30),
+                ),
+              ),
               SizedBox(height: 32.h),
-              CustomButton(title: 'Update', onpress: () {}),
+              CustomButton(
+                title: 'Update',
+                onpress: () {},
+                width: double.infinity,
+              ),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buttonForUploadNid(String name) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(name, style: TextStyle(fontSize: 16.sp)),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            fixedSize: Size.fromWidth(double.maxFinite),
-            backgroundColor: AppColor.primaryColor,
-            foregroundColor: AppColor.cardColorE9F2F9,
-          ),
-          onPressed: () {},
-          child: Icon(Icons.upload, size: 30),
-        ),
-      ],
     );
   }
 
@@ -185,5 +204,32 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _phoneTEController.dispose();
     _addressTEController.dispose();
     super.dispose();
+  }
+}
+
+class NidPicUploadButton extends StatelessWidget {
+  const NidPicUploadButton({super.key, required this.title, this.onTap,  this.child});
+
+  final String title;
+  final Function()? onTap;
+  final Widget? child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title, style: TextStyle(fontSize: 16.sp)),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size.fromWidth(double.maxFinite),
+            backgroundColor: AppColor.primaryColor,
+            foregroundColor: AppColor.cardColorE9F2F9,
+          ),
+          onPressed: onTap,
+          child:child,
+        ),
+      ],
+    );
   }
 }

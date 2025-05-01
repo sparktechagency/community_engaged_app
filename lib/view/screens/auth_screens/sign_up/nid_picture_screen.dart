@@ -90,7 +90,7 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
     );
   }
 
-  GestureDetector _takingBackSideNidPicture(BuildContext context) {
+  Widget _takingBackSideNidPicture(BuildContext context) {
     return GestureDetector(
       onTap: () async {
         await customPhotoPickerBottomSheet(

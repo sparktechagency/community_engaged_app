@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2019),
-      lastDate: DateTime(DateTime.now().year, DateTime.now().month + 1),
+      lastDate: DateTime(2030),
     );
     if (pickedDate != null) {
       setState(() {
@@ -42,13 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding:  EdgeInsets.all(24.r),
+          padding: EdgeInsets.all(24.r),
           child: Column(
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProfilePictureWithReferralCodeWidget(),
+                  ProfilePictureWithReferralCodeWidget(showReferralCode: true,),
                   Column(
                     children: [
                       Padding(
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ) // Show current month
                               : DateFormat('MMMM').format(_selectedDate!),
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                             color: AppColor.primaryColor,
                           ),
@@ -164,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(.1),
+            color: Color(0xffEAF4DD),
             spreadRadius: 2,
             // blurRadius: 5,
             offset: Offset(1, 5),
@@ -266,16 +266,20 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
             SizedBox(height: 8.h),
-            SvgPicture.asset(AppImage.verticalLogoUrl,height: 3.h,width: 105.w,),
+            SvgPicture.asset(
+              AppImage.verticalLogoUrl,
+              height: 3.h,
+              width: 105.w,
+            ),
             SizedBox(height: 8.h),
             CustomText(
               text:
                   'Join us in creating a brighter future. Your donations empower those in need, bringing hope and change to lives.',
               textAlign: TextAlign.start,
               textOverflow: TextOverflow.fade,
-              fontsize: 16.sp,
+              fontsize: 17.sp,
               color: Colors.white,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.bold,
             ),
           ],
         ),
