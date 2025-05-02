@@ -8,13 +8,16 @@ class TextFieldForThisProject extends StatelessWidget {
     super.key,
     this.controller,
     required this.titleName,
-    required this.hintText,  this.readOnly=false,
+    required this.hintText,
+    this.readOnly = false, this.isEmail = false, this.isPassword=false,
   });
 
   final TextEditingController? controller;
   final String titleName;
   final String hintText;
   final bool readOnly;
+  final bool isEmail;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +25,20 @@ class TextFieldForThisProject extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Text(titleName, style: TextStyle(fontSize: 16.sp)),
-        CustomText(text: titleName,fontsize: 16.sp,color: Colors.black,fontWeight: FontWeight.bold,),
+        CustomText(
+          text: titleName,
+          fontsize: 16.sp,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
         SizedBox(height: 2.h),
-        CustomTextField(controller: controller ?? TextEditingController(), hintText: hintText,readOnly: readOnly,),
+        CustomTextField(
+          controller: controller ?? TextEditingController(),
+          hintText: hintText,
+          readOnly: readOnly,
+          // isEmail:isEmail ,
+          // isPassword: isPassword,
+        ),
       ],
     );
   }

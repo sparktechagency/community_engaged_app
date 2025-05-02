@@ -4,13 +4,13 @@ import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/custom_app_bar_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_mini_card_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
+import 'package:community_engaged_app/view/widgets/month_year_picker.dart';
 import 'package:community_engaged_app/view/widgets/profile_picture_with_referral%20_code_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:month_year_picker/month_year_picker.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,20 +20,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  DateTime? _selectedDate;
-
-  Future<void> monthPicker() async {
-    final pickedDate = await showMonthYearPicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2019),
-      lastDate: DateTime(2030),
-    );
-    if (pickedDate != null) {
-      setState(() {
-        _selectedDate = pickedDate;
-      });
-    }
+  DateTime selectedDate = DateTime.now();
+  void _onDateSelected(DateTime date) {
+    setState(() {
+      selectedDate = date;
+    });
   }
 
   @override
@@ -48,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProfilePictureWithReferralCodeWidget(showReferralCode: true,),
+                  ProfilePictureWithReferralCodeWidget(showReferralCode: true),
                   Column(
                     children: [
                       Padding(
@@ -117,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      monthPicker();
+                      showCustomMonthYearPicker(context: context,onSelected: _onDateSelected);
                     },
                     child: Row(
                       children: [
@@ -125,17 +116,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           Icons.calendar_month_outlined,
                           color: AppColor.primaryColor,
                         ),
-                        Text(
-                          _selectedDate == null
-                              ? DateFormat('MMMM').format(
-                                DateTime.now(),
-                              ) // Show current month
-                              : DateFormat('MMMM').format(_selectedDate!),
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColor.primaryColor,
-                          ),
+                        CustomText(
+                          text:'${DateFormat('MMMM yyyy').format(selectedDate)}',
+                          fontsize: 16.sp,
+                          fontWeight: FontWeight.bold,
                         ),
                       ],
                     ),

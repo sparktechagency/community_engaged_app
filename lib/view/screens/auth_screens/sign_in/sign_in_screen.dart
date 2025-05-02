@@ -2,6 +2,7 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/widgets/app_logo.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
@@ -34,7 +35,7 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Column(
               children: [
                 SizedBox(height: 120.h),
-                Center(child: CircleAvatar(radius: 60.r)),
+                AppLogo(),
                 SizedBox(height: 96.h),
                 CustomTextField(
                   controller: _emailTEController,
@@ -54,10 +55,10 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintText: 'Enter Password',
                   isPassword: true,
                   suffixIconColor: Colors.black,
-                  prefixIcon:Padding(
+                  prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: SvgPicture.asset(AppImage.keyIconUrl),
-                  )
+                  ),
                 ),
                 SizedBox(height: 8.h),
                 Row(
@@ -67,28 +68,25 @@ class _SignInScreenState extends State<SignInScreen> {
                       onTap: () {
                         Get.toNamed(AppRoutes.emailVerificationScreen);
                       },
-                      // child: Text(
-                      //   'Forget  password?',
-                      //   style: TextStyle(color: AppColor.textButtonColor),
-                      // ),
-                      child: CustomText(text: 'Forget Password?',color: AppColor.textButtonColor,fontWeight: FontWeight.bold,),
+
+                      child: CustomText(
+                        text: 'Forget Password?',
+                        color: AppColor.textButtonColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
                 SizedBox(height: 32.h),
-                // CustomElevatedButtonWidget(
-                //   buttonName: "Let's Go",
-                //   onTapNext: _onTapSignInButton,
-                // ),
-                CustomButton(title: "Let's Go", onpress: _onTapSignInButton,),
+                CustomButton(title: "Let's Go", onpress: _onTapSignInButton),
                 SizedBox(height: 16.h),
                 RichText(
                   text: TextSpan(
-                    text:"Don't have an account?  ",
+                    text: "Don't have an account?  ",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black54,
-                      fontFamily: 'Outfit'
+                      fontFamily: 'Outfit',
                     ),
                     children: [
                       TextSpan(
@@ -96,7 +94,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.red,
-                          fontFamily: 'Outfit'
+                          fontFamily: 'Outfit',
                         ),
                         recognizer:
                             TapGestureRecognizer()..onTap = _onTapSignupButton,
@@ -128,3 +126,5 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 }
+
+

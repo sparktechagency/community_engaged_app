@@ -1,6 +1,5 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
-import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/step_progress_bar.dart';
 import 'package:community_engaged_app/view/widgets/text_field_for_this_project.dart';
@@ -58,11 +57,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   hintText: 'Phone Number',
                 ),
                 SizedBox(height: 8.h),
-
+                TextFieldForThisProject(
+                  controller: _addressTEController,
+                  titleName: 'Address',
+                  hintText: 'Your address',
+                ),
+                SizedBox(height: 8.h),
                 TextFieldForThisProject(
                   controller: _emailTEController,
                   titleName: 'E-mail',
                   hintText: 'Email address',
+                  isEmail: true,
                 ),
                 SizedBox(height: 8.h),
 
@@ -70,14 +75,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: _passwordTEController,
                   titleName: 'Password',
                   hintText: 'Password',
+                  isPassword: true,
                 ),
-                SizedBox(height: 18.h),
 
-                TextFieldForThisProject(
-                  controller: _addressTEController,
-                  titleName: 'Address',
-                  hintText: 'Your address',
-                ),
                 SizedBox(height: 40.h),
                 CustomButton(
                   title: 'Confirm',

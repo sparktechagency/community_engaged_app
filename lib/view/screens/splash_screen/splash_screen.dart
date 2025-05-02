@@ -63,6 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Get.toNamed(AppRoutes.signInScreen);
               },
             ),
+
           ],
         ),
       ),

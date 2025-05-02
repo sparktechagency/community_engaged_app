@@ -4,7 +4,6 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:month_year_picker/month_year_picker.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
@@ -46,7 +45,6 @@ class CommunityEngagedApp extends StatelessWidget {
         ),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
-          MonthYearPickerLocalizations.delegate,
         ],
       ),
     );

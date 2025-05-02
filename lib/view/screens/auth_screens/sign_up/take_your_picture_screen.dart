@@ -67,7 +67,17 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
                 backgroundImage: _image != null ? FileImage(_image!) : null,
               ),
               SizedBox(height: 20.h),
-              CustomButton(title: 'Take Picture', onpress: (){},width: 200.w,),
+              CustomButton(
+                title: 'Take Picture',
+                onpress: () {
+                  customPhotoPickerBottomSheet(
+                    context: context,
+                    onGalleryTap: _getPhotoFromGallery,
+                    onCameraTap: _getPhotoFromCamera,
+                  );
+                },
+                width: 200.w,
+              ),
               SizedBox(height: 238.h),
               CustomButton(
                 title: 'Sign Up',

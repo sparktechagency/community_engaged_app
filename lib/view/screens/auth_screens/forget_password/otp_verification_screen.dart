@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/view/widgets/app_logo.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_pin_code_text_field.dart';
@@ -64,7 +65,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           child: Column(
             children: [
               SizedBox(height: 20.h),
-              Center(child: CircleAvatar(radius: 60.r)),
+              AppLogo(),
               SizedBox(height: 96.h),
               CustomPinCodeTextField(),
               SizedBox(height: 8.h),

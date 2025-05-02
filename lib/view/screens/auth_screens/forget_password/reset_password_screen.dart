@@ -2,6 +2,7 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:community_engaged_app/view/widgets/app_logo.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
@@ -19,7 +20,8 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  final TextEditingController _reTypePasswordTEController = TextEditingController();
+  final TextEditingController _reTypePasswordTEController =
+      TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -27,7 +29,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(text: 'Reset Password',color: Colors.black,fontWeight: FontWeight.bold,fontsize: 20.sp,),
+        title: CustomText(
+          text: 'Reset Password',
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontsize: 20.sp,
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -38,7 +45,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             child: Column(
               children: [
                 SizedBox(height: 20.h),
-                Center(child: CircleAvatar(radius: 60.r)),
+                AppLogo(),
                 SizedBox(height: 90.h),
                 CustomTextField(
                   controller: _passwordTEController,
@@ -46,7 +53,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   isPassword: true,
                   prefixIcon: Padding(
                     padding: EdgeInsets.only(left: 8.h),
-                    child: SvgPicture.asset(AppImage.keyIconUrl)
+                    child: SvgPicture.asset(AppImage.keyIconUrl),
                   ),
                 ),
                 SizedBox(height: 16.h),
@@ -56,15 +63,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   isPassword: true,
                   prefixIcon: Padding(
                     padding: EdgeInsets.only(left: 8.h),
-                    child: SvgPicture.asset(AppImage.keyIconUrl)
+                    child: SvgPicture.asset(AppImage.keyIconUrl),
                   ),
                 ),
                 SizedBox(height: 32.h),
-                // CustomElevatedButtonWidget(
-                //   buttonName: "Confirm",
-                //   onTapNext: _onTapSignInButton,
-                // ),
-                CustomButton(title: 'Confirm', onpress: _onTapSignInButton)
+                CustomButton(title: 'Confirm', onpress: _onTapSignInButton),
               ],
             ),
           ),
