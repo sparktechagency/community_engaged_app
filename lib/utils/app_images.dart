@@ -13,9 +13,10 @@ class AppImage{
   static const String userIconUrl = '$_iconsBaseUrl/homeIcon2.svg';
   static const String settingsIconUrl = '$_iconsBaseUrl/settingsIcon.svg';
   static const String aboutUsIconUrl = '$_iconsBaseUrl/aboutUsIcon.svg';
-  static const String homeIconUrl = '$_iconsBaseUrl/Vector.svg';
+  static const String homeIconUrl = '$_iconsBaseUrl/bottom_nav_home.svg';
   static const String supportIconUrl = '$_iconsBaseUrl/supportIcon.svg';
   static const String profileIconUrl = '$_iconsBaseUrl/personIcon.svg';
   static const String tarataniLogoUrl = '$_iconsBaseUrl/Taratani_Logo-Final.svg';
+  static const String tarataniLogoUrl2 = '$_iconsBaseUrl/Taratani_Logo-Final.jpg';
 
 }

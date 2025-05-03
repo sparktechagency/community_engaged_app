@@ -1,3 +1,5 @@
+import 'package:community_engaged_app/routes/app_routes.dart';
+import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_pin_code_text_field.dart';
@@ -22,7 +24,7 @@ class _AddReferralCodeScreenState extends State<AddReferralCodeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: CustomText(
-          text: 'Reset Password',
+          text: 'Sign Up',
           color: Colors.black,
           fontWeight: FontWeight.bold,
           fontsize: 20.sp,
@@ -38,7 +40,7 @@ class _AddReferralCodeScreenState extends State<AddReferralCodeScreen> {
               Center(child: SvgPicture.asset(AppImage.referralCodeLogo)),
               SizedBox(height: 16.h),
               CustomText(
-                text: 'Referral Code',
+                text: 'Enter Referral Code',
                 fontsize: 26,
                 fontWeight: FontWeight.bold,
               ),
@@ -48,15 +50,16 @@ class _AddReferralCodeScreenState extends State<AddReferralCodeScreen> {
                 textAlign: TextAlign.center,
                 fontsize: 16,
                 textOverflow: TextOverflow.fade,
-                color: Colors.black,
+                color: Colors.black87,
               ),
               SizedBox(height: 16.h),
               CustomPinCodeTextField(
                 textEditingController: _referralCodeController,
               ),
               SizedBox(height: 32.h),
-              // CustomElevatedButtonWidget(buttonName: 'Sign Up', onTapNext: (){}),
-              CustomButton(title: 'Sign Up', onpress: () {}),
+              CustomButton(title: 'Sign Up', onpress: () {
+                Get.toNamed(AppRoutes.mainBottomNavBarScreen);
+              }),
             ],
           ),
         ),

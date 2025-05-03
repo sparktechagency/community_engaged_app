@@ -84,7 +84,7 @@ class _SupportScreenState extends State<SupportScreen> {
                     text: 'Support',
                     fontsize: 22.sp,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    // color: Colors.black,
                   ),
                 SizedBox(width: 8.w),
                 Container(
@@ -119,13 +119,14 @@ class _SupportScreenState extends State<SupportScreen> {
                 Row(
                   children: [
                     Icon(Icons.call, color: AppColor.cardColorE9F2F9),
+                    SizedBox(width: 16.w,),
                     CustomText(text:'(609)327-7992',fontsize: 16.sp,color: Colors.white,fontWeight: FontWeight.bold,)
                   ],
                 ),
                 Row(
                   children: [
                     Icon(Icons.mail, color: AppColor.cardColorE9F2F9),
-
+                    SizedBox(width: 16.w,),
                     CustomText(text:'bta2bigma@gmail.com',fontsize: 16.sp,color: Colors.white,fontWeight: FontWeight.bold,)
 
                   ],

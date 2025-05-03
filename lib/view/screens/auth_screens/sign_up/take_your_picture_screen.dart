@@ -65,6 +65,7 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
                 radius: 80.r,
                 backgroundColor: _image == null ? Colors.grey : null,
                 backgroundImage: _image != null ? FileImage(_image!) : null,
+                child:_image ==null? Icon(Icons.person,size: 140.r,color: Colors.white,) : null,
               ),
               SizedBox(height: 20.h),
               CustomButton(

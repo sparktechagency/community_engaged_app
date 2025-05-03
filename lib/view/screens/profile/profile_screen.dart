@@ -34,6 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: 'Mohammed-Intellu',
               fontsize: 22.sp,
               fontWeight: FontWeight.bold,
+              color: Colors.black87,
             ),
             SizedBox(height: 16.h),
             GestureDetector(
@@ -46,6 +47,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   text: 'Profile Information',
                   fontWeight: FontWeight.w600,
                   textAlign: TextAlign.start,
+                  fontsize: 16.sp,
+                  color: Colors.black,
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
@@ -65,6 +68,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   text: 'Settings',
                   fontWeight: FontWeight.w600,
                   textAlign: TextAlign.start,
+                  fontsize: 16.sp,
+                  color: Colors.black,
                 ),
 
                 trailing: Icon(
@@ -85,11 +90,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   text: 'Log Out',
                   fontWeight: FontWeight.w600,
                   textAlign: TextAlign.start,
+                  fontsize: 16.sp,
+                  color: Colors.black,
                 ),
-                // trailing: Icon(
-                //   Icons.arrow_forward_ios_outlined,
-                //   color: AppColor.primaryColor,
-                // ),
               ),
             ),
             Divider(),
@@ -107,10 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       firstButton: 'Cancel',
       lastButton: 'Logout',
       onPressedLastButton: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ErrorScreen()),
-        );
+        Get.offAllNamed(AppRoutes.signInScreen);
       },
     );
   }

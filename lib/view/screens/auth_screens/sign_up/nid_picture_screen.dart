@@ -5,7 +5,6 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
-import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_photo_picker_bottom_sheet.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/step_progress_bar.dart';
@@ -76,9 +75,9 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
               StepProgressBar(currentStep: 2),
               SizedBox(height: 20.h),
               _takingFrontSideNidPicture(context),
-              SizedBox(height: 20.h),
-              _takingBackSideNidPicture(context),
               SizedBox(height: 32.h),
+              _takingBackSideNidPicture(context),
+              SizedBox(height: 118.h),
               CustomButton(
                 title: 'Next',
                 onpress: () => Get.toNamed(AppRoutes.takeYourPictureScreen),
@@ -160,12 +159,16 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
       decoration: BoxDecoration(
         color: AppColor.primaryColor.withOpacity(.2),
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColor.primaryColor)
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.add, color: AppColor.primaryColor, size: 50),
-          SizedBox(height: 4.h),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 28),
+            child: Icon(Icons.add, color: AppColor.primaryColor, size: 50),
+          ),
+          // SizedBox(height: 4.h),
           // Text(name, style: TextStyle(color: Colors.grey)),
           CustomText(text: name, color: Colors.black, fontsize: 16.sp),
         ],

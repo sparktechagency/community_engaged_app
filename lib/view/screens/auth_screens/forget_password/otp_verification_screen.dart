@@ -5,7 +5,6 @@ import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/app_logo.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
-import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_pin_code_text_field.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +94,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 ],
               ),
               SizedBox(height: 32.h),
-              CustomButton(title: 'Verified', onpress: (){
+              CustomButton(title: 'Verify', onpress: (){
                 Get.toNamed(AppRoutes.resetPasswordScreen);
               })
             ],

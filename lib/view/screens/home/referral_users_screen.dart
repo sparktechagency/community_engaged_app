@@ -38,18 +38,21 @@ class _ReferralUsersScreenState extends State<ReferralUsersScreen> {
               margin: EdgeInsets.only(bottom: 8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: AppColor.primaryColor.withOpacity(.2),
+                color: Color(0xffF1F7E8),
               ),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(AppImage.splashScreenLogo),
-                  radius: 26,
-                ),
-                title: CustomText(
-                  text: 'Jane Cooper',
-                  color: Colors.black,
-                  fontsize: 18.sp,
-                  textAlign: TextAlign.start,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 9, bottom: 8),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(AppImage.splashScreenLogo),
+                    radius: 26,
+                  ),
+                  title: CustomText(
+                    text: 'Jane Cooper',
+                    color: Colors.black,
+                    fontsize: 18.sp,
+                    textAlign: TextAlign.start,
+                  ),
                 ),
               ),
             );

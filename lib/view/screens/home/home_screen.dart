@@ -40,13 +40,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProfilePictureWithReferralCodeWidget(showReferralCode: true),
+                  SizedBox(width:8 ,),
                   Column(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
+                        padding: const EdgeInsets.only(bottom: 4),
                         child: CustomText(
                           text: 'Mohammed-Intellu',
+                          textOverflow: TextOverflow.ellipsis,
                           fontsize: 22.sp,
+                          maxline: 5,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -142,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _cardForMonthlyPayHistory() {
     return Container(
       alignment: Alignment.topCenter,
-      height: 180,
+      height: 250.h,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -167,17 +172,17 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 CustomText(
                   text: 'Payment Date',
-                  fontsize: 14,
+                  fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
                 CustomText(
                   text: 'Status',
-                  fontsize: 14,
+                  fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
                 CustomText(
                   text: 'Amount',
-                  fontsize: 14,
+                  fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ],
@@ -185,6 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Divider(),
             Expanded(
               child: ListView.separated(
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: 5,
                 separatorBuilder:
                     (context, index) =>
@@ -199,17 +205,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         CustomText(
                           text: '27-04-25',
                           fontWeight: FontWeight.w600,
-                          fontsize: 14,
+                          fontsize: 12.sp,
                         ),
                         CustomText(
                           text: 'complete',
                           fontWeight: FontWeight.w600,
-                          fontsize: 14,
+                          fontsize: 12.sp,
                         ),
                         CustomText(
                           text: '2000xOF',
                           fontWeight: FontWeight.w600,
-                          fontsize: 14,
+                          fontsize: 12.sp,
                         ),
                       ],
                     ),
@@ -244,9 +250,16 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             CustomText(
               text: 'Referral more, earn more...',
-              fontsize: 22,
+              fontsize: 23.sp,
               color: Colors.white,
               fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  offset: Offset(0, 2),
+                  blurRadius: 3,
+                  color: Colors.grey,
+                )
+              ]
             ),
 
             SizedBox(height: 8.h),

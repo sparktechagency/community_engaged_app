@@ -1,10 +1,12 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
+import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/step_progress_bar.dart';
 import 'package:community_engaged_app/view/widgets/text_field_for_this_project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -75,6 +77,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: _passwordTEController,
                   titleName: 'Password',
                   hintText: 'Password',
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.only(left: 16.0,right: 8),
+                    child: SvgPicture.asset(AppImage.keyIconUrl),
+                  ),
                   isPassword: true,
                 ),
 

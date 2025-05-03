@@ -33,7 +33,7 @@ class CustomMiniCardWidget extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          height: 140.h,
+          height: 180.h,
           width: 170.w,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
           child: SvgPicture.asset(AppImage.customCard, fit: BoxFit.fill),
@@ -53,7 +53,7 @@ class CustomMiniCardWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 48.h),
             GestureDetector(
               onTap: onTap,
               child: Container(

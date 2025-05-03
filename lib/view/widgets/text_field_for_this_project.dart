@@ -9,15 +9,16 @@ class TextFieldForThisProject extends StatelessWidget {
     this.controller,
     required this.titleName,
     required this.hintText,
-    this.readOnly = false, this.isEmail = false, this.isPassword=false,
+    this.readOnly = false, this.isEmail, this.isPassword=false,this.prefixIcon
   });
 
   final TextEditingController? controller;
   final String titleName;
   final String hintText;
   final bool readOnly;
-  final bool isEmail;
+  final bool? isEmail;
   final bool isPassword;
+  final Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,9 @@ class TextFieldForThisProject extends StatelessWidget {
           controller: controller ?? TextEditingController(),
           hintText: hintText,
           readOnly: readOnly,
-          // isEmail:isEmail ,
-          // isPassword: isPassword,
+          isEmail:isEmail ,
+          isPassword: isPassword,
+          prefixIcon:prefixIcon,
         ),
       ],
     );

@@ -1,10 +1,11 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
+import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/screens/splash_screen/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import "package:flutter_localizations/flutter_localizations.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +40,7 @@ class CommunityEngagedApp extends StatelessWidget {
         initialRoute: AppRoutes.splashScreen,
         getPages: AppRoutes.routes,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor:AppColor.appColor,
           appBarTheme: AppBarTheme(color: Colors.white,scrolledUnderElevation: 0),
 
         ),

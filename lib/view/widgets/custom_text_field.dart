@@ -76,6 +76,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textInputAction: TextInputAction.next,
       maxLines: widget.maxLine ?? 1,
+      enabled: true,
       // validator: widget.validator,
       validator: widget.validator ??
               (value) {
@@ -148,7 +149,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(widget.borderRadio?.r ?? 100.r),
       borderSide:BorderSide(
-          color: widget.borderColor ?? AppColor.primaryColor
+          color: widget.borderColor ?? AppColor.primaryColor.withOpacity(.5),
       ),
     );
   }

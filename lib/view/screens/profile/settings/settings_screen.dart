@@ -51,6 +51,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         text: 'Change Password',
                         fontWeight: FontWeight.w600,
                         textAlign: TextAlign.start,
+                        fontsize: 16.sp,
+                        color: Colors.black,
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios_outlined,
@@ -73,6 +75,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         text: 'Privacy Policy',
                         fontWeight: FontWeight.w600,
                         textAlign: TextAlign.start,
+                        fontsize: 16.sp,
+                        color: Colors.black,
                       ),
 
                       trailing: Icon(
@@ -96,6 +100,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         text: 'Terms of Service',
                         fontWeight: FontWeight.w600,
                         textAlign: TextAlign.start,
+                        fontsize: 16.sp,
+                        color: Colors.black,
                       ),
 
                       trailing: Icon(
@@ -119,6 +125,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         text: 'About Us',
                         fontWeight: FontWeight.w600,
                         textAlign: TextAlign.start,
+                        fontsize: 16.sp,
+                        color: Colors.black,
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios_outlined,
