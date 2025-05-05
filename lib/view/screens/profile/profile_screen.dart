@@ -1,7 +1,6 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
-import 'package:community_engaged_app/view/screens/404_page/404_page_screen.dart';
 import 'package:community_engaged_app/view/widgets/custom_app_bar_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_pop_up_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
@@ -106,6 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return customPopUpWidget(
       context: context,
       title: 'Log Out!',
+      titleColor: Colors.red,
       subtitle: 'Are you sure want to Logout?',
       firstButton: 'Cancel',
       lastButton: 'Logout',

@@ -22,11 +22,6 @@ class _ReferralUsersScreenState extends State<ReferralUsersScreen> {
           color: Colors.black,
           fontsize: 22.sp,
         ),
-        titleTextStyle: TextStyle(
-          color: Colors.black,
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-        ),
         centerTitle: true,
       ),
       body: Padding(

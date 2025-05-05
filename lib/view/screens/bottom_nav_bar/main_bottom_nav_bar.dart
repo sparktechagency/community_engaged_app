@@ -24,53 +24,56 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // resizeToAvoidBottomInset: true,
       body: _screens[_selectedIndex],
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(left: 24.r, right: 24.r, bottom: 20.r),
-        child: Container(
-          height: 60.h,
-          width: double.infinity,
-          padding: EdgeInsets.all(10.r),
-          decoration: BoxDecoration(
-            color: AppColor.primaryColor,
-            borderRadius: BorderRadius.circular(54.r),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: List.generate(3, (index) {
-              final bool isSelected = _selectedIndex == index;
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.only(left: 24.r, right: 24.r, bottom: 20.r),
+          child: Container(
+            height: 60.h,
+            width: double.infinity,
+            padding: EdgeInsets.all(10.r),
+            decoration: BoxDecoration(
+              color: AppColor.primaryColor,
+              borderRadius: BorderRadius.circular(54.r),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(3, (index) {
+                final bool isSelected = _selectedIndex == index;
 
-              // Dynamic icon based on selection
-              final iconPath = index == 0
-                  ? AppImage.homeIconUrl
-                  : index == 1
-                  ? AppImage.supportIconUrl
-                  : AppImage.profileIconUrl;
+                // Dynamic icon based on selection
+                final iconPath = index == 0
+                    ? AppImage.homeIconUrl
+                    : index == 1
+                    ? AppImage.supportIconUrl
+                    : AppImage.profileIconUrl;
 
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                },
-                child: Container(
-                  width: 50.r,
-                  height: 50.r,
-                  decoration: BoxDecoration(
-                    color: isSelected ? Colors.white : Colors.transparent,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      iconPath,
-                      color: isSelected ? AppColor.primaryColor : Colors.white,
-                      width: 28.w,
-                      height: 28.h,
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _selectedIndex = index;
+                    });
+                  },
+                  child: Container(
+                    width: 50.r,
+                    height: 50.r,
+                    decoration: BoxDecoration(
+                      color: isSelected ? Colors.white : Colors.transparent,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: SvgPicture.asset(
+                        iconPath,
+                        color: isSelected ? AppColor.primaryColor : Colors.white,
+                        width: 28.w,
+                        height: 28.h,
+                      ),
                     ),
                   ),
-                ),
-              );
-            }),
+                );
+              }),
+            ),
           ),
         ),
       ),

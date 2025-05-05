@@ -41,38 +41,41 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   ProfilePictureWithReferralCodeWidget(showReferralCode: true),
                   SizedBox(width:8 ,),
-                  Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 4),
-                        child: CustomText(
-                          text: 'Mohammed-Intellu',
-                          textOverflow: TextOverflow.ellipsis,
-                          fontsize: 22.sp,
-                          maxline: 5,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          textStyle: TextStyle(
-                            fontSize: 16.h,
-                            fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 4),
+                          child: CustomText(
+                            text: 'Shofiqur Rahman Soyon',
+                            textOverflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.start,
+                            fontsize: 22.sp,
+                            maxline: 5,
+                            fontWeight: FontWeight.bold,
                           ),
-                          backgroundColor: AppColor.primaryColor,
-                          foregroundColor: Colors.white,
                         ),
-                        onPressed: () {},
-                        child: CustomText(
-                          text: 'Donate Now',
-                          color: Colors.white,
-                          fontsize: 17.sp,
-                          fontWeight: FontWeight.bold,
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            textStyle: TextStyle(
+                              fontSize: 16.h,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            backgroundColor: AppColor.primaryColor,
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: () {},
+                          child: CustomText(
+                            text: 'Donate Now',
+                            color: Colors.white,
+                            fontsize: 17.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -147,28 +150,28 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _cardForMonthlyPayHistory() {
     return Container(
       alignment: Alignment.topCenter,
-      height: 250.h,
       width: double.infinity,
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Color(0xffEAF4DD),
-            spreadRadius: 2,
-            // blurRadius: 5,
-            offset: Offset(1, 5),
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 6,
+            offset: Offset(0, 3),
           ),
         ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center, // align vertically
               children: [
                 CustomText(
                   text: 'Payment Date',
@@ -188,45 +191,43 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Divider(),
-            Expanded(
-              child: ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: 5,
-                separatorBuilder:
-                    (context, index) =>
-                        Divider(color: Colors.grey, thickness: 1),
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomText(
-                          text: '27-04-25',
-                          fontWeight: FontWeight.w600,
-                          fontsize: 12.sp,
-                        ),
-                        CustomText(
-                          text: 'complete',
-                          fontWeight: FontWeight.w600,
-                          fontsize: 12.sp,
-                        ),
-                        CustomText(
-                          text: '2000xOF',
-                          fontWeight: FontWeight.w600,
-                          fontsize: 12.sp,
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+            ListView.separated(
+              shrinkWrap: true, // allow ListView inside Column
+              physics: NeverScrollableScrollPhysics(), // disable inner scrolling
+              itemCount: 5, // or any dynamic value
+              separatorBuilder: (context, index) => Divider(color: Colors.grey),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CustomText(
+                        text: '27-04-25',
+                        fontWeight: FontWeight.w600,
+                        fontsize: 12.sp,
+                      ),
+                      CustomText(
+                        text: 'complete',
+                        fontWeight: FontWeight.w600,
+                        fontsize: 12.sp,
+                      ),
+                      CustomText(
+                        text: '2000xOF',
+                        fontWeight: FontWeight.w600,
+                        fontsize: 12.sp,
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
       ),
     );
+
   }
 
   ///custom card for show user bio and it static for all user

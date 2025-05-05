@@ -22,7 +22,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       TextEditingController();
   final TextEditingController _newPasswordTEController =
       TextEditingController();
-  final TextEditingController _reTypepasswordTEController =
+  final TextEditingController _reTypePasswordTEController =
       TextEditingController();
 
   @override
@@ -45,22 +45,31 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             child: Column(
               children: [
                 SizedBox(height: 20.h),
-                TextFieldForThisProject(
+                TextFieldWithExternalTitle(
                   controller: _currentPasswordTEController,
                   titleName: 'Current Password',
                   hintText: 'Current Password',
+
+                  isPassword: true,
                 ),
                 SizedBox(height: 16.h),
-                TextFieldForThisProject(
+                TextFieldWithExternalTitle(
                   controller: _newPasswordTEController,
                   titleName: 'New Password',
                   hintText: 'New password',
+                  isPassword: true,
                 ),
                 SizedBox(height: 16.h),
-                TextFieldForThisProject(
-                  controller: _reTypepasswordTEController,
+                TextFieldWithExternalTitle(
+                  controller: _reTypePasswordTEController,
                   titleName: 'New Password',
                   hintText: 'Re-type New Password',
+                  isPassword: true,
+                  validator: (value) {
+                    if (value != _newPasswordTEController.text) {
+                      return 'New password do not match';
+                    }
+                  },
                 ),
                 SizedBox(height: 8.h),
                 Row(
@@ -80,7 +89,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 SizedBox(height: 32.h),
                 CustomButton(
-
                   title: 'Update Password',
                   // loading: true,
                   onpress: () {
@@ -95,6 +103,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
                         ),
                       );
+                      Get.offAllNamed(AppRoutes.mainBottomNavBarScreen);
                     }
                   },
                 ),
@@ -111,7 +120,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     FocusScope.of(context).unfocus();
     _currentPasswordTEController.dispose();
     _newPasswordTEController.dispose();
-    _reTypepasswordTEController.dispose();
+    _reTypePasswordTEController.dispose();
     super.dispose();
   }
 }

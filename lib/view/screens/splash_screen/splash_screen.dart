@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Center(
               child: Image.asset(
                 AppImage.splashScreenLogo,
-                height: maxHeight *.38,
+                height: maxHeight * .38,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
@@ -60,10 +60,9 @@ class _SplashScreenState extends State<SplashScreen> {
             CustomButton(
               title: 'Start Your Journey!',
               onpress: () {
-                Get.toNamed(AppRoutes.signInScreen);
+                Get.offAllNamed(AppRoutes.signInScreen);
               },
             ),
-
           ],
         ),
       ),

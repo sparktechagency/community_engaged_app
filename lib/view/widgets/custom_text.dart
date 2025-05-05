@@ -19,7 +19,7 @@ class CustomText extends StatelessWidget {
         this.textHeight,
         this.fontWeight = FontWeight.w400,
         this.color,
-        this.text = "", this.shadows});
+        this.text = "", this.shadows,  this.decoration});
 
   final double left;
   final TextOverflow? textOverflow;
@@ -35,6 +35,7 @@ class CustomText extends StatelessWidget {
   final String? fontName;
   final double? textHeight;
   final List<Shadow>? shadows;
+  final TextDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +53,7 @@ class CustomText extends StatelessWidget {
           fontWeight:fontWeight ?? FontWeight.w400   ,
           color: color ?? AppColor.secondaryColor,
           shadows: shadows,
+          decoration:decoration,
         ),
       ),
     );

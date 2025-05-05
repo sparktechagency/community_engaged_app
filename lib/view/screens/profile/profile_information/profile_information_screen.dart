@@ -44,23 +44,23 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
                 child: ProfilePictureWithReferralCodeWidget()
               ),
               SizedBox(height: 16.h),
-              TextFieldForThisProject(titleName: 'Name',
+              TextFieldWithExternalTitle(titleName: 'Name',
                   readOnly: true,
                   hintText: 'Your name'),
               SizedBox(height: 2.h),
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'E-mail',
                 readOnly: true,
                 hintText: 'example@gmail.com',
               ),
               SizedBox(height: 2.h),
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'Phone No.',
                 readOnly: true,
                 hintText: '05810-57070',
               ),
               SizedBox(height: 2.h),
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'Address',
                 readOnly: true,
                 hintText: 'Address',

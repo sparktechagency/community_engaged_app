@@ -1,5 +1,4 @@
 import 'package:community_engaged_app/utils/app_colors.dart';
-import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,12 +21,7 @@ Future<bool?> customPopUpWidget({
       return AlertDialog(
         actionsAlignment: MainAxisAlignment.spaceEvenly,
         alignment: Alignment.center,
-        // title: CustomText(
-        //   text: title,
-        //   color: titleColor,
-        //   fontWeight: FontWeight.bold,
-        //   fontsize: 20.sp,
-        // ),
+
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

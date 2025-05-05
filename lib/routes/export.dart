@@ -21,3 +21,5 @@ export 'package:community_engaged_app/view/screens/profile/settings/settings_scr
 export 'package:community_engaged_app/view/screens/profile/settings/about_us/about_us_screen.dart';
 export 'package:community_engaged_app/view/screens/profile/settings/privacy_policy/privacy_policy_screen.dart';
 export 'package:community_engaged_app/view/screens/profile/settings/terms_of_service/terms_of_service_screen.dart';
+export 'package:community_engaged_app/view/screens/splash_screen/loading_screen.dart';
+
