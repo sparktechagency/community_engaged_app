@@ -19,6 +19,7 @@ class NidPictureScreen extends StatefulWidget {
 }
 
 class _NidPictureScreenState extends State<NidPictureScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   File? _frontSideImage;
   File? _backSideImage;
   ImagePickerHelper _imagePickerHelper = ImagePickerHelper();
@@ -78,10 +79,7 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
               SizedBox(height: 32.h),
               _takingBackSideNidPicture(context),
               SizedBox(height: 118.h),
-              CustomButton(
-                title: 'Next',
-                onpress: () => Get.toNamed(AppRoutes.takeYourPictureScreen),
-              ),
+              CustomButton(title: 'Next', onpress: _onTapValidate),
             ],
           ),
         ),
@@ -100,22 +98,22 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
       },
       child:
           _backSideImage != null
-              ?  Container(
-            height: 200,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.file(
-                _backSideImage!,
+              ? Container(
                 height: 200,
                 width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-          )
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.file(
+                    _backSideImage!,
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
               : _uploadNidPictureCard('Upload back side Picture here'),
     );
   }
@@ -129,24 +127,25 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
           onCameraTap: () => _getImageFromCamera(isFrontSide: true),
         );
       },
-      child: _frontSideImage != null
-          ? Container(
-        height: 200,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Image.file(
-            _frontSideImage!,
-            height: 200,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-        ),
-      )
-          : _uploadNidPictureCard('Upload front side Picture here'),
+      child:
+          _frontSideImage != null
+              ? Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.file(
+                    _frontSideImage!,
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+              : _uploadNidPictureCard('Upload front side Picture here'),
     );
   }
 
@@ -159,7 +158,7 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
       decoration: BoxDecoration(
         color: AppColor.primaryColor.withOpacity(.2),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColor.primaryColor)
+        border: Border.all(color: AppColor.primaryColor),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -174,5 +173,18 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
         ],
       ),
     );
+  }
+
+  void _onTapValidate() {
+    if (_frontSideImage != null && _backSideImage != null) {
+      Get.toNamed(AppRoutes.takeYourPictureScreen);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enter your NID card Picture'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 }

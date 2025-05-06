@@ -28,7 +28,7 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
       body: _screens[_selectedIndex],
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 24.r, right: 24.r, bottom: 20.r),
+          padding: EdgeInsets.only(left: 24.r, right: 24.r),
           child: Container(
             height: 60.h,
             width: double.infinity,
@@ -41,13 +41,13 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(3, (index) {
                 final bool isSelected = _selectedIndex == index;
-
-                // Dynamic icon based on selection
-                final iconPath = index == 0
-                    ? AppImage.homeIconUrl
-                    : index == 1
-                    ? AppImage.supportIconUrl
-                    : AppImage.profileIconUrl;
+                // Dynamic icon for selecting terms and conditions
+                final iconPath =
+                    index == 0
+                        ? AppImage.homeIconUrl
+                        : index == 1
+                        ? AppImage.supportIconUrl
+                        : AppImage.profileIconUrl;
 
                 return GestureDetector(
                   onTap: () {
@@ -65,7 +65,8 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
                     child: Center(
                       child: SvgPicture.asset(
                         iconPath,
-                        color: isSelected ? AppColor.primaryColor : Colors.white,
+                        color:
+                            isSelected ? AppColor.primaryColor : Colors.white,
                         width: 28.w,
                         height: 28.h,
                       ),

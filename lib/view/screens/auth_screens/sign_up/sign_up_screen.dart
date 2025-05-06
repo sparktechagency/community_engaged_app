@@ -39,57 +39,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                StepProgressBar(currentStep: 1),
-                SizedBox(height: 40.h),
-                TextFieldWithExternalTitle(
-                  controller: _nameTEController,
-                  titleName: 'Your Name',
-                  hintText: 'Name',
-                ),
-                SizedBox(height: 8.h),
-
-                TextFieldWithExternalTitle(
-                  controller: _phoneTEController,
-                  titleName: 'Phone',
-                  hintText: 'Phone Number',
-                ),
-                SizedBox(height: 8.h),
-                TextFieldWithExternalTitle(
-                  controller: _addressTEController,
-                  titleName: 'Address',
-                  hintText: 'Your address',
-                ),
-                SizedBox(height: 8.h),
-                TextFieldWithExternalTitle(
-                  controller: _emailTEController,
-                  titleName: 'E-mail',
-                  hintText: 'Email address',
-                  isEmail: true,
-                ),
-                SizedBox(height: 8.h),
-
-                TextFieldWithExternalTitle(
-                  controller: _passwordTEController,
-                  titleName: 'Password',
-                  hintText: 'Password',
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.only(left: 16.0, right: 8),
-                    child: SvgPicture.asset(AppImage.keyIconUrl),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  StepProgressBar(currentStep: 1),
+                  SizedBox(height: 40.h),
+                  TextFieldWithExternalTitle(
+                    controller: _nameTEController,
+                    titleName: 'Your Name',
+                    hintText: 'Name',
                   ),
-                  isPassword: true,
-                ),
-                SizedBox(height: 16.h),
-                _checkBoxForTermsAndConditions(),
-                SizedBox(height: 40.h),
-                CustomButton(title: 'Confirm', onpress: _onTapSignInButton),
-              ],
+                  SizedBox(height: 8.h),
+        
+                  TextFieldWithExternalTitle(
+                    controller: _phoneTEController,
+                    titleName: 'Phone',
+                    hintText: 'Phone Number',
+                  ),
+                  SizedBox(height: 8.h),
+                  TextFieldWithExternalTitle(
+                    controller: _addressTEController,
+                    titleName: 'Address',
+                    hintText: 'Your address',
+                  ),
+                  SizedBox(height: 8.h),
+                  TextFieldWithExternalTitle(
+                    controller: _emailTEController,
+                    titleName: 'E-mail',
+                    hintText: 'Email address',
+                    isEmail: true,
+                  ),
+                  SizedBox(height: 8.h),
+        
+                  TextFieldWithExternalTitle(
+                    controller: _passwordTEController,
+                    titleName: 'Password',
+                    hintText: 'Password',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.only(left: 16.0, right: 8),
+                      child: SvgPicture.asset(AppImage.keyIconUrl),
+                    ),
+                    isPassword: true,
+                  ),
+                  SizedBox(height: 16.h),
+                  _checkBoxForTermsAndConditions(),
+                  SizedBox(height: 40.h),
+                  CustomButton(title: 'Confirm', onpress: _onTapSignInButton),
+                ],
+              ),
             ),
           ),
         ),

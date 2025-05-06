@@ -21,7 +21,6 @@ Future<bool?> customPopUpWidget({
       return AlertDialog(
         actionsAlignment: MainAxisAlignment.spaceEvenly,
         alignment: Alignment.center,
-
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

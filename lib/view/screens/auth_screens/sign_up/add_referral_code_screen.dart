@@ -55,11 +55,15 @@ class _AddReferralCodeScreenState extends State<AddReferralCodeScreen> {
               SizedBox(height: 16.h),
               CustomPinCodeTextField(
                 textEditingController: _referralCodeController,
+                isBoxShape: false,
               ),
               SizedBox(height: 32.h),
-              CustomButton(title: 'Sign Up', onpress: () {
-                Get.toNamed(AppRoutes.mainBottomNavBarScreen);
-              }),
+              CustomButton(
+                title: 'Sign Up',
+                onpress: () {
+                  Get.toNamed(AppRoutes.mainBottomNavBarScreen);
+                },
+              ),
             ],
           ),
         ),

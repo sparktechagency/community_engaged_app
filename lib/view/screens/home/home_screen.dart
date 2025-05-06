@@ -21,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   DateTime selectedDate = DateTime.now();
+
   void _onDateSelected(DateTime date) {
     setState(() {
       selectedDate = date;
@@ -40,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProfilePictureWithReferralCodeWidget(showReferralCode: true),
-                  SizedBox(width:8 ,),
+                  SizedBox(width: 8),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -116,7 +117,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      showCustomMonthYearPicker(context: context,onSelected: _onDateSelected);
+                      showCustomMonthYearPicker(
+                        context: context,
+                        onSelected: _onDateSelected,
+                      );
                     },
                     child: Row(
                       children: [
@@ -125,7 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColor.primaryColor,
                         ),
                         CustomText(
-                          text:'${DateFormat('MMMM yyyy').format(selectedDate)}',
+                          text:
+                              '${DateFormat('MMMM yyyy').format(selectedDate)}',
                           fontsize: 16.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -192,9 +197,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Divider(),
             ListView.separated(
-              shrinkWrap: true, // allow ListView inside Column
-              physics: NeverScrollableScrollPhysics(), // disable inner scrolling
-              itemCount: 5, // or any dynamic value
+              shrinkWrap: true,
+              // allow ListView inside Column
+              physics: NeverScrollableScrollPhysics(),
+              // disable inner scrolling
+              itemCount: 5,
+              // or any dynamic value
               separatorBuilder: (context, index) => Divider(color: Colors.grey),
               itemBuilder: (context, index) {
                 return Padding(
@@ -227,7 +235,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
-
   }
 
   ///custom card for show user bio and it static for all user
@@ -255,12 +262,8 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.white,
               fontWeight: FontWeight.bold,
               shadows: [
-                Shadow(
-                  offset: Offset(0, 2),
-                  blurRadius: 3,
-                  color: Colors.grey,
-                )
-              ]
+                Shadow(offset: Offset(0, 2), blurRadius: 3, color: Colors.grey),
+              ],
             ),
 
             SizedBox(height: 8.h),
@@ -268,6 +271,7 @@ class _HomeScreenState extends State<HomeScreen> {
               AppImage.verticalLogoUrl,
               height: 3.h,
               width: 105.w,
+              color: AppColor.secondaryColor,
             ),
             SizedBox(height: 8.h),
             CustomText(

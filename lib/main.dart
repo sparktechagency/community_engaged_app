@@ -2,6 +2,7 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/screens/splash_screen/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import "package:flutter_localizations/flutter_localizations.dart";
@@ -14,8 +15,8 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  runApp(
-    DevicePreview(enabled: false, builder: (context) => CommunityEngagedApp()),
+  runApp(kDebugMode?
+  DevicePreview(enabled:  false, builder: (context) => CommunityEngagedApp()) :CommunityEngagedApp()
   );
 }
 

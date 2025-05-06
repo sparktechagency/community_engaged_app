@@ -41,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Get.toNamed(AppRoutes.profileInformationScreen);
               },
               child: ListTile(
-                leading: SvgPicture.asset(AppImage.userIconUrl,height: 28.h,width: 28.w,),
+                leading: SvgPicture.asset(AppImage.userIconUrl,height: 28.h,width: 28.w,color: AppColor.primaryColor,),
                 title: CustomText(
                   text: 'Profile Information',
                   fontWeight: FontWeight.w600,
@@ -62,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Get.toNamed(AppRoutes.settingScreen);
               },
               child: ListTile(
-                leading:SvgPicture.asset(AppImage.settingsIconUrl,height: 28.h,width: 28.w,),
+                leading:SvgPicture.asset(AppImage.settingsIconUrl,height: 28.h,width: 28.w,color: AppColor.primaryColor,),
                 title: CustomText(
                   text: 'Settings',
                   fontWeight: FontWeight.w600,
@@ -84,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _onTapCustomPopUp(context);
               },
               child: ListTile(
-                leading:SvgPicture.asset(AppImage.logOutIconUrl,height: 28.h,width: 28.w,),
+                leading:SvgPicture.asset(AppImage.logOutIconUrl,height: 28.h,width: 28.w,color: AppColor.primaryColor,),
                 title: CustomText(
                   text: 'Log Out',
                   fontWeight: FontWeight.w600,

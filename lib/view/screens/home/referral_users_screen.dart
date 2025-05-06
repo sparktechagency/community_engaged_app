@@ -1,4 +1,3 @@
-import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';

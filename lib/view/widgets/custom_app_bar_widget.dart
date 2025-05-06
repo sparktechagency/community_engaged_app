@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: Padding(
         padding: const EdgeInsets.only(left: 24, top: 16),
-        child: SvgPicture.asset(AppImage.homeLogo, fit: BoxFit.contain),
+        child: SvgPicture.asset(AppImage.homeLogo, fit: BoxFit.contain,color: AppColor.primaryColor,),
       ),
       actions: [
         Padding(
