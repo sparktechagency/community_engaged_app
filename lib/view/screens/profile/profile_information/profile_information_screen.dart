@@ -40,47 +40,47 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
           child: Column(
             children: [
               SizedBox(height: 30.h),
-              Center(
-                child: ProfilePictureWithReferralCodeWidget()
-              ),
+              Center(child: ProfilePictureWithReferralCodeWidget()),
               SizedBox(height: 16.h),
-              TextFieldForThisProject(titleName: 'Name',
-                  readOnly: true,
-                  hintText: 'Your name'),
+              TextFieldWithExternalTitle(
+                titleName: 'Name',
+                readOnly: true,
+                hintText: 'Your name',
+              ),
               SizedBox(height: 2.h),
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'E-mail',
                 readOnly: true,
                 hintText: 'example@gmail.com',
               ),
               SizedBox(height: 2.h),
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'Phone No.',
                 readOnly: true,
                 hintText: '05810-57070',
               ),
               SizedBox(height: 2.h),
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'Address',
                 readOnly: true,
                 hintText: 'Address',
               ),
               SizedBox(height: 8.h),
-              CustomButton(title: 'NidFront.jpg', onpress: () {
-                showDialog(context: context, builder: (context){
-                  return AlertDialog(
-                    content: Image.asset(AppImage.splashScreenLogo,fit: BoxFit.cover,),
-                  );
-                });
-              }, height: 42.h),
+              CustomButton(
+                title: 'NidFront.jpg',
+                onpress: () {
+                  showNidPopUp(context);
+                },
+                height: 42.h,
+              ),
               SizedBox(height: 2.h),
-              CustomButton(title: 'NidBack.jpg', onpress: () {
-                showDialog(context: context, builder: (context){
-                  return AlertDialog(
-                    content: Image.asset(AppImage.splashScreenLogo,fit: BoxFit.cover,),
-                  );
-                });
-              }, height: 42.h),
+              CustomButton(
+                title: 'NidBack.jpg',
+                onpress: () {
+                 showNidPopUp(context);
+                },
+                height: 42.h,
+              ),
               SizedBox(height: 32.h),
               CustomButton(
                 title: 'Edit Profile',
@@ -93,6 +93,54 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
         ),
       ),
     );
+  }
+
+  Future<dynamic> showNidPopUp(BuildContext context) {
+    return showDialog(
+                  barrierDismissible: false,
+                  context: context,
+                  builder: (context) {
+                    return Center(
+                      child: Stack(
+                        alignment: Alignment(1.1,-1.10),
+                        children: [
+                         Container(
+                           height: 229.h,
+                           width: 327.w,
+                           decoration: BoxDecoration(
+                             color: Colors.white,
+                             borderRadius: BorderRadius.circular(16),
+                             // boxShadow:[
+                             //   BoxShadow(
+                             //     color: Colors.grey,
+                             //     offset: Offset(0, 2),
+                             //     // blurRadius: 2,
+                             //     spreadRadius: 2,
+                             //   )
+                             // ],
+                             image: DecorationImage(image: AssetImage(AppImage.tarataniLogoUrl2),fit: BoxFit.contain)
+                           ),
+
+                         ),
+                          GestureDetector(
+                            onTap: (){
+                              Get.back();
+                            },
+                            child: Container(
+                              height: 30.h,
+                              width: 30.w,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(Icons.close,color: Colors.red,),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                );
   }
 
   @override

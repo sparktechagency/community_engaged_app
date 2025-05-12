@@ -40,14 +40,14 @@ class ProfilePictureWithReferralCodeWidget extends StatelessWidget {
         if (showReferralCode)
           Container(
             alignment: Alignment.center,
-            height: 25.h,
-            width: 130.w,
+            height: 27.h,
+            width: 103.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              color: Colors.green,
+              color: AppColor.primaryColor,
             ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 4, right: 4),
+              padding: const EdgeInsets.only(left: 4, right: 4,bottom: 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -55,7 +55,7 @@ class ProfilePictureWithReferralCodeWidget extends StatelessWidget {
                     text: referralCode,
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
-                    fontsize: 19.sp,
+                    fontsize: 16.sp,
                   ),
                   GestureDetector(
                     onTap: () {
@@ -67,6 +67,7 @@ class ProfilePictureWithReferralCodeWidget extends StatelessWidget {
                     child: Icon(
                       Icons.copy_outlined,
                       color: AppColor.cardColorE9F2F9,
+                      size: 20.h,
                       weight: .5,
                     ),
                   ),

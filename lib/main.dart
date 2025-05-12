@@ -1,10 +1,12 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
+import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/screens/splash_screen/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import "package:flutter_localizations/flutter_localizations.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,9 +14,9 @@ void main() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-
-  runApp(
-    DevicePreview(enabled: false, builder: (context) => CommunityEngagedApp()),
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  runApp(kDebugMode?
+  DevicePreview(enabled:  false, builder: (context) => CommunityEngagedApp()) :CommunityEngagedApp()
   );
 }
 
@@ -36,16 +38,17 @@ class CommunityEngagedApp extends StatelessWidget {
         builder: DevicePreview.appBuilder,
         locale: DevicePreview.locale(context),
         home: SplashScreen(),
-        initialRoute: AppRoutes.splashScreen,
+        initialRoute: AppRoutes.loadingScreen,
         getPages: AppRoutes.routes,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          appBarTheme: AppBarTheme(color: Colors.white,scrolledUnderElevation: 0),
+          scaffoldBackgroundColor: AppColor.appColor,
+          appBarTheme: AppBarTheme(
 
+            color: Colors.white,
+            scrolledUnderElevation: 0,
+          ),
         ),
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-        ],
+        localizationsDelegates: [GlobalMaterialLocalizations.delegate],
       ),
     );
   }

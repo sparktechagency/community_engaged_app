@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 
 ///custom photo picker when a will be tapped this widget will come from down with gallery
@@ -20,20 +22,36 @@ Future<void> customPhotoPickerBottomSheet({
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            TextButton(
-              child: const Text('Gallery'),
-              onPressed: () {
-                Navigator.pop(context);
-                onGalleryTap();
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  Icon(Icons.image),
+                  TextButton(
+                    child: const Text('Gallery'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      onGalleryTap();
+                    },
+                  ),
+                ],
+              ),
             ),
-            const Divider(),
-            TextButton(
-              child: const Text('Camera'),
-              onPressed: () {
-                Navigator.pop(context);
-                onCameraTap();
-              },
+            // const Divider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  Icon(Icons.camera_alt),
+                  TextButton(
+                    child: const Text('Camera'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      onCameraTap();
+                    },
+                  ),
+                ],
+              ),
             ),
           ],
         ),

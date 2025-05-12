@@ -14,15 +14,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: Padding(
         padding: const EdgeInsets.only(left: 24, top: 16),
-        child: SvgPicture.asset(AppImage.homeLogo, fit: BoxFit.contain),
+        child: SvgPicture.asset(AppImage.homeLogo, fit: BoxFit.contain,color: AppColor.primaryColor,),
       ),
       actions: [
-       Padding(
-         padding:  EdgeInsets.only(right: 16.w),
-         child: IconButton(onPressed: (){
-           Get.toNamed(AppRoutes.notificationScreen);
-         }, icon: Badge.count(count: 18,child: Icon(Icons.notifications,color: AppColor.secondaryColor,size: 30.sp,),)),
-       )
+        Padding(
+          padding: EdgeInsets.only(right: 16.w),
+          child: IconButton(
+            onPressed: () {
+              Get.toNamed(AppRoutes.notificationScreen);
+            },
+            icon: Badge.count(
+              count: 18,
+              child: Icon(
+                Icons.notifications_none_outlined,
+                color: AppColor.secondaryColor,
+                size: 30.sp,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

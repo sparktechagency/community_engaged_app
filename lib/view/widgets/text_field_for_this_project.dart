@@ -3,21 +3,23 @@ import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TextFieldForThisProject extends StatelessWidget {
-  const TextFieldForThisProject({
+class TextFieldWithExternalTitle extends StatelessWidget {
+  const TextFieldWithExternalTitle({
     super.key,
     this.controller,
     required this.titleName,
     required this.hintText,
-    this.readOnly = false, this.isEmail = false, this.isPassword=false,
+    this.readOnly = false, this.isEmail, this.isPassword=false,this.prefixIcon, this.validator
   });
 
   final TextEditingController? controller;
   final String titleName;
   final String hintText;
   final bool readOnly;
-  final bool isEmail;
+  final bool? isEmail;
   final bool isPassword;
+  final Widget? prefixIcon;
+  final String? Function(dynamic)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +38,10 @@ class TextFieldForThisProject extends StatelessWidget {
           controller: controller ?? TextEditingController(),
           hintText: hintText,
           readOnly: readOnly,
-          // isEmail:isEmail ,
-          // isPassword: isPassword,
+          isEmail:isEmail ,
+          isPassword: isPassword,
+          prefixIcon:prefixIcon,
+          validator:validator ,
         ),
       ],
     );

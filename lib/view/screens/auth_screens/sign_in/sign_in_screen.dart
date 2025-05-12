@@ -4,7 +4,6 @@ import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/app_logo.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
-import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
 import 'package:flutter/gestures.dart';
@@ -45,7 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     padding: EdgeInsets.only(left: 8.h),
                     child: Icon(
                       Icons.email_outlined,
-                      color: AppColor.primaryColor.withOpacity(.5),
+                      color: AppColor.primaryColor,
                     ),
                   ),
                 ),
@@ -57,7 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   suffixIconColor: Colors.black,
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 8.0),
-                    child: SvgPicture.asset(AppImage.keyIconUrl),
+                    child: SvgPicture.asset(AppImage.keyIconUrl,color: AppColor.primaryColor,),
                   ),
                 ),
                 SizedBox(height: 8.h),

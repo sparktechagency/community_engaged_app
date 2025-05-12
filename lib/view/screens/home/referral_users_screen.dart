@@ -1,4 +1,3 @@
-import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -22,11 +21,6 @@ class _ReferralUsersScreenState extends State<ReferralUsersScreen> {
           color: Colors.black,
           fontsize: 22.sp,
         ),
-        titleTextStyle: TextStyle(
-          color: Colors.black,
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-        ),
         centerTitle: true,
       ),
       body: Padding(
@@ -38,18 +32,21 @@ class _ReferralUsersScreenState extends State<ReferralUsersScreen> {
               margin: EdgeInsets.only(bottom: 8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: AppColor.primaryColor.withOpacity(.2),
+                color: Color(0xffF1F7E8),
               ),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(AppImage.splashScreenLogo),
-                  radius: 26,
-                ),
-                title: CustomText(
-                  text: 'Jane Cooper',
-                  color: Colors.black,
-                  fontsize: 18.sp,
-                  textAlign: TextAlign.start,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 9, bottom: 8),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(AppImage.splashScreenLogo),
+                    radius: 26,
+                  ),
+                  title: CustomText(
+                    text: 'Jane Cooper',
+                    color: Colors.black,
+                    fontsize: 18.sp,
+                    textAlign: TextAlign.start,
+                  ),
                 ),
               ),
             );

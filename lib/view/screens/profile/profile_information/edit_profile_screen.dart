@@ -129,28 +129,28 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
               SizedBox(height: 8.h),
 
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'Your Name',
                 hintText: 'Your Name',
                 controller: _nameTEController,
               ),
               SizedBox(height: 2.h),
 
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'E-mail',
                 hintText: 'email address',
                 controller: _emailTEController,
               ),
 
               SizedBox(height: 2.h),
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'Phone No.',
                 hintText: '2058210-09715097',
                 controller: _phoneTEController,
               ),
 
               SizedBox(height: 2.h),
-              TextFieldForThisProject(
+              TextFieldWithExternalTitle(
                 titleName: 'Address',
                 hintText: 'address',
                 controller: _addressTEController,
@@ -190,6 +190,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 onpress: () {},
                 width: double.infinity,
               ),
+              SizedBox(height: 32.h),
             ],
           ),
         ),

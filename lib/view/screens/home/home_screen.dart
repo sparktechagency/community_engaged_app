@@ -21,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   DateTime selectedDate = DateTime.now();
+
   void _onDateSelected(DateTime date) {
     setState(() {
       selectedDate = date;
@@ -40,34 +41,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProfilePictureWithReferralCodeWidget(showReferralCode: true),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: CustomText(
-                          text: 'Mohammed-Intellu',
-                          fontsize: 22.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          textStyle: TextStyle(
-                            fontSize: 16.h,
-                            fontWeight: FontWeight.w500,
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 4),
+                          child: CustomText(
+                            text: 'Shofiqur Rahman Soyon',
+                            textOverflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.start,
+                            fontsize: 22.sp,
+                            maxline: 5,
+                            fontWeight: FontWeight.bold,
                           ),
-                          backgroundColor: AppColor.primaryColor,
-                          foregroundColor: Colors.white,
                         ),
-                        onPressed: () {},
-                        child: CustomText(
-                          text: 'Donate Now',
-                          color: Colors.white,
-                          fontsize: 17.sp,
-                          fontWeight: FontWeight.bold,
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            textStyle: TextStyle(
+                              fontSize: 16.h,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            backgroundColor: AppColor.primaryColor,
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: () {},
+                          child: CustomText(
+                            text: 'Donate Now',
+                            color: Colors.white,
+                            fontsize: 17.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -108,7 +117,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      showCustomMonthYearPicker(context: context,onSelected: _onDateSelected);
+                      showCustomMonthYearPicker(
+                        context: context,
+                        onSelected: _onDateSelected,
+                      );
                     },
                     child: Row(
                       children: [
@@ -117,7 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColor.primaryColor,
                         ),
                         CustomText(
-                          text:'${DateFormat('MMMM yyyy').format(selectedDate)}',
+                          text:
+                              '${DateFormat('MMMM yyyy').format(selectedDate)}',
                           fontsize: 16.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -142,80 +155,81 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _cardForMonthlyPayHistory() {
     return Container(
       alignment: Alignment.topCenter,
-      height: 180,
       width: double.infinity,
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Color(0xffEAF4DD),
-            spreadRadius: 2,
-            // blurRadius: 5,
-            offset: Offset(1, 5),
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 6,
+            offset: Offset(0, 3),
           ),
         ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center, // align vertically
               children: [
                 CustomText(
                   text: 'Payment Date',
-                  fontsize: 14,
+                  fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
                 CustomText(
                   text: 'Status',
-                  fontsize: 14,
+                  fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
                 CustomText(
                   text: 'Amount',
-                  fontsize: 14,
+                  fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ],
             ),
             Divider(),
-            Expanded(
-              child: ListView.separated(
-                itemCount: 5,
-                separatorBuilder:
-                    (context, index) =>
-                        Divider(color: Colors.grey, thickness: 1),
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomText(
-                          text: '27-04-25',
-                          fontWeight: FontWeight.w600,
-                          fontsize: 14,
-                        ),
-                        CustomText(
-                          text: 'complete',
-                          fontWeight: FontWeight.w600,
-                          fontsize: 14,
-                        ),
-                        CustomText(
-                          text: '2000xOF',
-                          fontWeight: FontWeight.w600,
-                          fontsize: 14,
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+            ListView.separated(
+              shrinkWrap: true,
+              // allow ListView inside Column
+              physics: NeverScrollableScrollPhysics(),
+              // disable inner scrolling
+              itemCount: 5,
+              // or any dynamic value
+              separatorBuilder: (context, index) => Divider(color: Colors.grey),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CustomText(
+                        text: '27-04-25',
+                        fontWeight: FontWeight.w600,
+                        fontsize: 12.sp,
+                      ),
+                      CustomText(
+                        text: 'complete',
+                        fontWeight: FontWeight.w600,
+                        fontsize: 12.sp,
+                      ),
+                      CustomText(
+                        text: '2000xOF',
+                        fontWeight: FontWeight.w600,
+                        fontsize: 12.sp,
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -244,9 +258,12 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             CustomText(
               text: 'Referral more, earn more...',
-              fontsize: 22,
+              fontsize: 23.sp,
               color: Colors.white,
               fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(offset: Offset(0, 2), blurRadius: 3, color: Colors.grey),
+              ],
             ),
 
             SizedBox(height: 8.h),
@@ -254,6 +271,7 @@ class _HomeScreenState extends State<HomeScreen> {
               AppImage.verticalLogoUrl,
               height: 3.h,
               width: 105.w,
+              color: AppColor.secondaryColor,
             ),
             SizedBox(height: 8.h),
             CustomText(

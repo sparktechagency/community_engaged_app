@@ -1,13 +1,10 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
-import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/app_logo.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
-import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/custom_text_field.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -60,6 +57,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 CustomTextField(
                   controller: _reTypePasswordTEController,
                   hintText: 'Re-enter Password',
+                  validator: (value) {
+                    if (value != _passwordTEController.text) {
+                      return 'Password do not match';
+                    }
+                  },
                   isPassword: true,
                   prefixIcon: Padding(
                     padding: EdgeInsets.only(left: 8.h),
@@ -77,7 +79,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   }
 
   void _onTapSignInButton() {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState!.validate()) {
+      Get.offAllNamed(AppRoutes.signInScreen);
+    }
   }
 
   @override

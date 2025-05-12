@@ -10,6 +10,6 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child:SvgPicture.asset(AppImage.tarataniLogoUrl,height: 128.h,) );
+    return Center(child:Image.asset(AppImage.tarataniLogoUrl2,height: 148.h,));
   }
 }

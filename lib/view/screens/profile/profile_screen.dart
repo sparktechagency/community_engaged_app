@@ -1,7 +1,6 @@
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
-import 'package:community_engaged_app/view/screens/404_page/404_page_screen.dart';
 import 'package:community_engaged_app/view/widgets/custom_app_bar_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_pop_up_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
@@ -34,6 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: 'Mohammed-Intellu',
               fontsize: 22.sp,
               fontWeight: FontWeight.bold,
+              color: Colors.black87,
             ),
             SizedBox(height: 16.h),
             GestureDetector(
@@ -41,11 +41,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Get.toNamed(AppRoutes.profileInformationScreen);
               },
               child: ListTile(
-                leading: SvgPicture.asset(AppImage.userIconUrl,height: 28.h,width: 28.w,),
+                leading: SvgPicture.asset(AppImage.userIconUrl,height: 28.h,width: 28.w,color: AppColor.primaryColor,),
                 title: CustomText(
                   text: 'Profile Information',
                   fontWeight: FontWeight.w600,
                   textAlign: TextAlign.start,
+                  fontsize: 16.sp,
+                  color: Colors.black,
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios_outlined,
@@ -60,11 +62,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Get.toNamed(AppRoutes.settingScreen);
               },
               child: ListTile(
-                leading:SvgPicture.asset(AppImage.settingsIconUrl,height: 28.h,width: 28.w,),
+                leading:SvgPicture.asset(AppImage.settingsIconUrl,height: 28.h,width: 28.w,color: AppColor.primaryColor,),
                 title: CustomText(
                   text: 'Settings',
                   fontWeight: FontWeight.w600,
                   textAlign: TextAlign.start,
+                  fontsize: 16.sp,
+                  color: Colors.black,
                 ),
 
                 trailing: Icon(
@@ -80,16 +84,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _onTapCustomPopUp(context);
               },
               child: ListTile(
-                leading:SvgPicture.asset(AppImage.logOutIconUrl,height: 28.h,width: 28.w,),
+                leading:SvgPicture.asset(AppImage.logOutIconUrl,height: 28.h,width: 28.w,color: AppColor.primaryColor,),
                 title: CustomText(
                   text: 'Log Out',
                   fontWeight: FontWeight.w600,
                   textAlign: TextAlign.start,
+                  fontsize: 16.sp,
+                  color: Colors.black,
                 ),
-                // trailing: Icon(
-                //   Icons.arrow_forward_ios_outlined,
-                //   color: AppColor.primaryColor,
-                // ),
               ),
             ),
             Divider(),
@@ -103,14 +105,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return customPopUpWidget(
       context: context,
       title: 'Log Out!',
+      titleColor: Colors.red,
       subtitle: 'Are you sure want to Logout?',
       firstButton: 'Cancel',
       lastButton: 'Logout',
       onPressedLastButton: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ErrorScreen()),
-        );
+        Get.offAllNamed(AppRoutes.signInScreen);
       },
     );
   }

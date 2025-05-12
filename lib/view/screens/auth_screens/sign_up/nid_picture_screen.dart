@@ -5,7 +5,6 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
-import 'package:community_engaged_app/view/widgets/custom_elevated_button_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_photo_picker_bottom_sheet.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/step_progress_bar.dart';
@@ -20,6 +19,7 @@ class NidPictureScreen extends StatefulWidget {
 }
 
 class _NidPictureScreenState extends State<NidPictureScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   File? _frontSideImage;
   File? _backSideImage;
   ImagePickerHelper _imagePickerHelper = ImagePickerHelper();
@@ -76,13 +76,10 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
               StepProgressBar(currentStep: 2),
               SizedBox(height: 20.h),
               _takingFrontSideNidPicture(context),
-              SizedBox(height: 20.h),
-              _takingBackSideNidPicture(context),
               SizedBox(height: 32.h),
-              CustomButton(
-                title: 'Next',
-                onpress: () => Get.toNamed(AppRoutes.takeYourPictureScreen),
-              ),
+              _takingBackSideNidPicture(context),
+              SizedBox(height: 118.h),
+              CustomButton(title: 'Next', onpress: _onTapValidate),
             ],
           ),
         ),
@@ -101,22 +98,22 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
       },
       child:
           _backSideImage != null
-              ?  Container(
-            height: 200,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.file(
-                _backSideImage!,
+              ? Container(
                 height: 200,
                 width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-          )
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.file(
+                    _backSideImage!,
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
               : _uploadNidPictureCard('Upload back side Picture here'),
     );
   }
@@ -130,24 +127,25 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
           onCameraTap: () => _getImageFromCamera(isFrontSide: true),
         );
       },
-      child: _frontSideImage != null
-          ? Container(
-        height: 200,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Image.file(
-            _frontSideImage!,
-            height: 200,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-        ),
-      )
-          : _uploadNidPictureCard('Upload front side Picture here'),
+      child:
+          _frontSideImage != null
+              ? Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.file(
+                    _frontSideImage!,
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+              : _uploadNidPictureCard('Upload front side Picture here'),
     );
   }
 
@@ -160,16 +158,33 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
       decoration: BoxDecoration(
         color: AppColor.primaryColor.withOpacity(.2),
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColor.primaryColor),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.add, color: AppColor.primaryColor, size: 50),
-          SizedBox(height: 4.h),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 28),
+            child: Icon(Icons.add, color: AppColor.primaryColor, size: 50),
+          ),
+          // SizedBox(height: 4.h),
           // Text(name, style: TextStyle(color: Colors.grey)),
           CustomText(text: name, color: Colors.black, fontsize: 16.sp),
         ],
       ),
     );
+  }
+
+  void _onTapValidate() {
+    if (_frontSideImage != null && _backSideImage != null) {
+      Get.toNamed(AppRoutes.takeYourPictureScreen);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enter your NID card Picture'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 }
