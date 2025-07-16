@@ -1,6 +1,8 @@
+import 'package:community_engaged_app/gen/assets.gen.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,9 +14,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 24, top: 16),
-        child: SvgPicture.asset(AppImage.homeLogo, fit: BoxFit.contain,color: AppColor.primaryColor,),
+      // leading: Padding(
+      //   padding: const EdgeInsets.only(left: 24, top: 16),
+      //   child: SvgPicture.asset(AppImage.homeLogo, fit: BoxFit.contain,color: AppColor.primaryColor,),
+      // ),
+      // leading: Row(
+      //   children: [
+      //     SizedBox(width: 20.w),
+      //
+      //   ],
+      // ),
+      leadingWidth: 70.w,
+      leading: Row(
+        children: [
+          SizedBox(width: 18.w,),
+          Expanded(child: Assets.icons.tarataniLogoFinal.image(height: 60.h, width: 60.w)),
+        ],
       ),
       actions: [
         Padding(
@@ -26,8 +41,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: Badge.count(
               count: 18,
               child: Icon(
-                Icons.notifications_none_outlined,
-                color: AppColor.secondaryColor,
+                // Icons.notifications_none_outlined,
+                CupertinoIcons.bell,
+                color: AppColor.primaryColor,
                 size: 30.sp,
               ),
             ),

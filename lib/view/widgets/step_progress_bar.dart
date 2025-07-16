@@ -32,7 +32,7 @@ class StepProgressBar extends StatelessWidget {
               height: 5,
               width: stepWidth,
               decoration: BoxDecoration(
-                color: AppColor.secondaryColor,
+                color: AppColor.primaryColor,
                 borderRadius: BorderRadius.circular(16),
               ),
             ),

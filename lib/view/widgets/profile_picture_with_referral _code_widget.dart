@@ -1,4 +1,5 @@
 import 'package:community_engaged_app/utils/app_colors.dart';
+import 'package:community_engaged_app/view/widgets/custom_network_image.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +11,8 @@ class ProfilePictureWithReferralCodeWidget extends StatelessWidget {
     this.height = 104,
     this.width = 104,
     this.referralCode = "245323",
-    this.showReferralCode = false,  this.child,
+    this.showReferralCode = false,
+    this.child,
   });
 
   final double height;
@@ -32,10 +34,18 @@ class ProfilePictureWithReferralCodeWidget extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: AppColor.primaryColor, width: 3),
           ),
-          child:child?? Image.asset(
-            'assets/images/splash_logo.png',
-            fit: BoxFit.cover,
-          ),
+          // child:child?? Image.asset(
+          //   'https://i.pravatar.cc/150?img=29',
+          //   fit: BoxFit.cover,
+          // ),
+          child:
+              child ??
+              CustomNetworkImage(
+                imageUrl: 'https://i.pravatar.cc/150?img=30',
+                height: 104.h,
+                width: 104.w,
+                boxShape: BoxShape.circle,
+              ),
         ),
         if (showReferralCode)
           Container(
@@ -47,7 +57,7 @@ class ProfilePictureWithReferralCodeWidget extends StatelessWidget {
               color: AppColor.primaryColor,
             ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 4, right: 4,bottom: 4),
+              padding: const EdgeInsets.only(left: 4, right: 4, bottom: 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

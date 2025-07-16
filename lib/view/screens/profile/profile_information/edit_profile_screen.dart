@@ -186,8 +186,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
               SizedBox(height: 32.h),
               CustomButton(
-                title: 'Update',
-                onpress: () {},
+                label: 'Update',
+                onPressed: () {},
                 width: double.infinity,
               ),
               SizedBox(height: 32.h),

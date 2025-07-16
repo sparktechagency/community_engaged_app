@@ -9,7 +9,12 @@ class TextFieldWithExternalTitle extends StatelessWidget {
     this.controller,
     required this.titleName,
     required this.hintText,
-    this.readOnly = false, this.isEmail, this.isPassword=false,this.prefixIcon, this.validator
+    this.readOnly = false,
+    this.isEmail,
+    this.isPassword = false,
+    this.prefixIcon,
+    this.validator,
+    this.keyboardType,
   });
 
   final TextEditingController? controller;
@@ -20,6 +25,7 @@ class TextFieldWithExternalTitle extends StatelessWidget {
   final bool isPassword;
   final Widget? prefixIcon;
   final String? Function(dynamic)? validator;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +37,18 @@ class TextFieldWithExternalTitle extends StatelessWidget {
           text: titleName,
           fontsize: 16.sp,
           color: Colors.black,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w400,
         ),
         SizedBox(height: 2.h),
         CustomTextField(
           controller: controller ?? TextEditingController(),
           hintText: hintText,
           readOnly: readOnly,
-          isEmail:isEmail ,
+          isEmail: isEmail,
+          keyboardType: keyboardType,
           isPassword: isPassword,
-          prefixIcon:prefixIcon,
-          validator:validator ,
+          prefixIcon: prefixIcon,
+          validator: validator,
         ),
       ],
     );

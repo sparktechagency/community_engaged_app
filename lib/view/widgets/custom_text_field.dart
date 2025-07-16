@@ -1,3 +1,4 @@
+import 'package:community_engaged_app/gen/fonts.gen.dart';
 import 'package:community_engaged_app/utils/app_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -137,15 +138,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
         hintText: widget.hintText,
         hintStyle: TextStyle(
           color: widget.hintTextColor ?? Colors.black,
-          fontSize: widget.hintTextSize ?? 14.h,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Outfit',
+          fontSize: widget.hintTextSize ?? 14.sp,
+          fontWeight: FontWeight.w300,
+          fontFamily: FontFamily.poppins,
         ),
         focusedBorder: focusedBorder(),
         enabledBorder: enabledBorder(),
         errorBorder: errorBorder(),
         border: focusedBorder(),
-        errorStyle: TextStyle(fontSize: 12.h, fontWeight: FontWeight.w400),
+        errorStyle: TextStyle(fontSize: 12.h, fontWeight: FontWeight.w300),
       ),
     );
   }

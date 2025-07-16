@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final maxHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 46.r),
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -39,27 +39,28 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 CustomText(
                   text: 'Chase Your Dream',
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.bold,
                   maxline: 2,
                   textAlign: TextAlign.start,
+                  color: AppColor.primaryColor,
                   fontsize: 48.h,
                 ),
-
+                SizedBox(height: 16.h),
                 CustomText(
                   text:
                       'Join us in creating a brighter future. Your donations empower those in need, bringing hope and change to lives.',
-                  fontsize: 17.h,
+                  // fontsize: 17.h,
                   textOverflow: TextOverflow.fade,
                   textAlign: TextAlign.start,
                   fontWeight: FontWeight.bold,
-                  color: AppColor.secondaryColor,
+                  color: AppColor.primaryColor,
                 ),
               ],
             ),
             SizedBox(height: 40.h),
             CustomButton(
-              title: 'Start Your Journey!',
-              onpress: () {
+              label: 'Start Your Journey !',
+              onPressed: () {
                 Get.offAllNamed(AppRoutes.signInScreen);
               },
             ),

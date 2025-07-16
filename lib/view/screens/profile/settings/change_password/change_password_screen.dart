@@ -31,7 +31,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       appBar: AppBar(
         title: CustomText(
           text: 'Change Password',
-          fontsize: 22.sp,
+          fontsize: 20   .sp,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
@@ -87,11 +87,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 32.h),
+                SizedBox(height: 150 .h),
                 CustomButton(
-                  title: 'Update Password',
+                  label: 'Update Password',
                   // loading: true,
-                  onpress: () {
+                  onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

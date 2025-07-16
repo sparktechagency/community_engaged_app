@@ -1,5 +1,7 @@
+import 'package:community_engaged_app/gen/assets.gen.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
+import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/app_logo.dart';
 import 'package:community_engaged_app/view/widgets/custom_button.dart';
@@ -42,7 +44,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             child: Column(
               children: [
                 SizedBox(height: 20.h),
-                AppLogo(),
+                Assets.icons.tarataniLogoFinal.image(
+                  height: 128.h,
+                  width: 128.w,
+                ),
                 SizedBox(height: 90.h),
                 CustomTextField(
                   controller: _passwordTEController,
@@ -50,7 +55,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   isPassword: true,
                   prefixIcon: Padding(
                     padding: EdgeInsets.only(left: 8.h),
-                    child: SvgPicture.asset(AppImage.keyIconUrl),
+                    child: SvgPicture.asset(AppImage.keyIconUrl,color: AppColor.primaryColor,),
                   ),
                 ),
                 SizedBox(height: 16.h),
@@ -64,12 +69,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   },
                   isPassword: true,
                   prefixIcon: Padding(
-                    padding: EdgeInsets.only(left: 8.h),
-                    child: SvgPicture.asset(AppImage.keyIconUrl),
+                    padding: EdgeInsets.only(left: 8.h,),
+                    child: SvgPicture.asset(AppImage.keyIconUrl,color: AppColor.primaryColor,),
                   ),
                 ),
                 SizedBox(height: 32.h),
-                CustomButton(title: 'Confirm', onpress: _onTapSignInButton),
+                CustomButton(label: 'Confirm', onPressed: _onTapSignInButton),
               ],
             ),
           ),

@@ -2,6 +2,7 @@ import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/utils/app_images.dart';
 import 'package:community_engaged_app/view/widgets/custom_app_bar_widget.dart';
+import 'package:community_engaged_app/view/widgets/custom_button.dart';
 import 'package:community_engaged_app/view/widgets/custom_mini_card_widget.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
 import 'package:community_engaged_app/view/widgets/month_year_picker.dart';
@@ -56,25 +57,32 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontsize: 22.sp,
                             maxline: 5,
                             fontWeight: FontWeight.bold,
+                            color: AppColor.primaryColor,
                           ),
                         ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            textStyle: TextStyle(
-                              fontSize: 16.h,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            backgroundColor: AppColor.primaryColor,
-                            foregroundColor: Colors.white,
-                          ),
+                        CustomButton(
                           onPressed: () {},
-                          child: CustomText(
-                            text: 'Donate Now',
-                            color: Colors.white,
-                            fontsize: 17.sp,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          label: "Donate Now",
+                          height: 38.h,
+                          width: 159.w,
                         ),
+                        // ElevatedButton(
+                        //   style: ElevatedButton.styleFrom(
+                        //     textStyle: TextStyle(
+                        //       fontSize: 16.h,
+                        //       fontWeight: FontWeight.w500,
+                        //     ),
+                        //     backgroundColor: AppColor.primaryColor,
+                        //     foregroundColor: Colors.white,
+                        //   ),
+                        //   onPressed: () {},
+                        //   child: CustomText(
+                        //     text: ,
+                        //     color: Colors.white,
+                        //     fontsize: 17.sp,
+                        //     fontWeight: FontWeight.bold,
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -114,6 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     text: 'Overview',
                     fontsize: 20,
                     fontWeight: FontWeight.bold,
+                    color: AppColor.primaryColor,
                   ),
                   GestureDetector(
                     onTap: () async {
@@ -129,8 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColor.primaryColor,
                         ),
                         CustomText(
-                          text:
-                              '${DateFormat('MMMM yyyy').format(selectedDate)}',
+                          text: DateFormat('MMMM yyyy').format(selectedDate),
                           fontsize: 16.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -182,16 +190,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   text: 'Payment Date',
                   fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
+                  color: AppColor.primaryColor,
                 ),
                 CustomText(
                   text: 'Status',
                   fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
+                  color: AppColor.primaryColor,
                 ),
                 CustomText(
                   text: 'Amount',
                   fontsize: 14.sp,
                   fontWeight: FontWeight.w600,
+                  color: AppColor.primaryColor,
                 ),
               ],
             ),
@@ -215,16 +226,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         text: '27-04-25',
                         fontWeight: FontWeight.w600,
                         fontsize: 12.sp,
+                        color: AppColor.primaryColor,
                       ),
                       CustomText(
                         text: 'complete',
                         fontWeight: FontWeight.w600,
                         fontsize: 12.sp,
+                        color: AppColor.primaryColor,
                       ),
                       CustomText(
                         text: '2000xOF',
                         fontWeight: FontWeight.w600,
                         fontsize: 12.sp,
+                        color: AppColor.primaryColor,
                       ),
                     ],
                   ),
@@ -256,14 +270,20 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(
-              text: 'Referral more, earn more...',
-              fontsize: 23.sp,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              shadows: [
-                Shadow(offset: Offset(0, 2), blurRadius: 3, color: Colors.grey),
-              ],
+            Flexible(
+              child: CustomText(
+                text: 'Referral more, earn more...',
+                fontsize: 23.sp,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  Shadow(
+                    offset: Offset(0, 2),
+                    blurRadius: 3,
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
             ),
 
             SizedBox(height: 8.h),
@@ -271,17 +291,19 @@ class _HomeScreenState extends State<HomeScreen> {
               AppImage.verticalLogoUrl,
               height: 3.h,
               width: 105.w,
-              color: AppColor.secondaryColor,
+              color: Colors.black,
             ),
             SizedBox(height: 8.h),
-            CustomText(
-              text:
-                  'Join us in creating a brighter future. Your donations empower those in need, bringing hope and change to lives.',
-              textAlign: TextAlign.start,
-              textOverflow: TextOverflow.fade,
-              fontsize: 17.sp,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+            Flexible(
+              child: CustomText(
+                text:
+                    'Join us in creating a brighter future. Your donations empower those in need, bringing hope and change to lives.',
+                textAlign: TextAlign.start,
+                textOverflow: TextOverflow.fade,
+                fontsize: 14.sp,
+                color: Colors.white,
+                // fontWeight: FontWeight.w40,
+              ),
             ),
           ],
         ),

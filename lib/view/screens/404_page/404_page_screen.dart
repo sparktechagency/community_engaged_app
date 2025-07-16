@@ -22,7 +22,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
             Image.asset(AppImage.errorImageUrl),
             SizedBox(height: 24.h),
             // CustomElevatedButtonWidget(buttonName: 'Re-load', onTapNext: () {}),
-            CustomButton(title: 'Re-load', onpress: () {}),
+            CustomButton(label: 'Re-load', onPressed: () {}),
           ],
         ),
       ),

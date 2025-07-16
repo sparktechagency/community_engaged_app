@@ -151,6 +151,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     titleColor: Colors.red,
                     subtitle: 'Are you sure want to delete your account?',
                     firstButton: 'Cancel',
+                    borderColor: Colors.green,
                     lastButton: 'Yes,Delete',
                   );
                 },

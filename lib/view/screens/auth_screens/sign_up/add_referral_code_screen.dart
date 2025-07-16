@@ -59,8 +59,8 @@ class _AddReferralCodeScreenState extends State<AddReferralCodeScreen> {
               ),
               SizedBox(height: 32.h),
               CustomButton(
-                title: 'Sign Up',
-                onpress: () {
+                label: 'Sign Up',
+                onPressed: () {
                   Get.toNamed(AppRoutes.mainBottomNavBarScreen);
                 },
               ),

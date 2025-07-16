@@ -24,57 +24,6 @@ class CustomMiniCardWidget extends StatelessWidget {
   final BuildContext context;
   final String buttonName;
   final void Function()? onTap;
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   final width = MediaQuery.of(context).size.width;
-  //   return Stack(
-  //     alignment: Alignment.center,
-  //     children: [
-  //       Container(
-  //         height: 180.h,
-  //         width: 170.w,
-  //         decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-  //         child: SvgPicture.asset(AppImage.customCard, fit: BoxFit.fill),
-  //       ),
-  //       Column(
-  //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //         children: [
-  //           CustomText(
-  //             text: cardTitle,
-  //             fontsize: 18.sp,
-  //             fontWeight: FontWeight.bold,
-  //             color: Colors.white,
-  //           ),
-  //           CustomText(
-  //             text: cardSubtitle,
-  //             fontsize: 18.sp,
-  //             fontWeight: FontWeight.bold,
-  //             color: Colors.white,
-  //           ),
-  //           SizedBox(height: 48.h),
-  //           GestureDetector(
-  //             onTap: onTap,
-  //             child: Container(
-  //               alignment: Alignment.center,
-  //               height: 34.h,
-  //               width: 114.w,
-  //               decoration: BoxDecoration(
-  //                 color: Colors.white,
-  //                 borderRadius: BorderRadius.circular(16),
-  //               ),
-  //               child: CustomText(
-  //                 text: buttonName,
-  //                 fontsize: 16.sp,
-  //                 fontWeight: FontWeight.bold,
-  //               ),
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ],
-  //   );
-  // }
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -88,10 +37,10 @@ class CustomMiniCardWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColor.primaryColor,
             borderRadius: BorderRadius.only(
-              topRight: Radius.circular(16),
-              topLeft: Radius.circular(16),
-              bottomLeft: Radius.circular(16),
-              bottomRight: Radius.circular(16),
+              topRight: Radius.circular(16.r),
+              topLeft: Radius.circular(16.r),
+              bottomLeft: Radius.circular(16.r),
+              bottomRight: Radius.circular(16.r),
             ),
           ),
           child: Padding(
@@ -118,35 +67,27 @@ class CustomMiniCardWidget extends StatelessWidget {
         ///half curved container
         Container(
           alignment: Alignment.center,
-          height: 70.h,
+          height: 60.h,
           width: 165.w,
           decoration: BoxDecoration(
-            color: AppColor.secondaryColor,
+            color: Color(0xFF000A3A),
             // border: Border(right: BorderSide.)
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(100.r),
-              topRight: Radius.circular(100.r),
+              topLeft: Radius.circular(10000.r),
+              topRight: Radius.circular(10000.r),
               bottomLeft: Radius.circular(16.r),
               bottomRight: Radius.circular(16.r),
             ),
           ),
           // child: CustomButton(title: buttonName, onpress:()=>onTap),
-          child: GestureDetector(
-            onTap: onTap,
-            child: Container(
-              alignment: Alignment.center,
-              height: 34.h,
-              width: 114.w,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(100.r),
-              ),
-              child: CustomText(
-                text: buttonName,
-                fontsize: 14.sp,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+          child: CustomButton(
+            onPressed: () {},
+            label: buttonName,
+            height: 34.h,
+            width: 114.w,
+            backgroundColor: Colors.white,
+            foregroundColor: AppColor.primaryColor,
+            fontSize: 14.sp,
           ),
         ),
       ],

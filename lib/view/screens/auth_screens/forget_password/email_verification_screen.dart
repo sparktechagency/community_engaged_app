@@ -1,3 +1,4 @@
+import 'package:community_engaged_app/gen/assets.gen.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
@@ -39,11 +40,14 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
           child: Column(
             children: [
               SizedBox(height: 20.h),
-              AppLogo(),
+              Assets.icons.tarataniLogoFinal.image(
+                height: 128.h,
+                width: 128.w,
+              ),
               SizedBox(height: 96.h),
               CustomTextField(
                 controller: _emailTEController,
-                hintText: 'Enter E-mail',
+                hintText: '  Enter E-mail',
                 isEmail: true,
                 prefixIcon: Padding(
                   padding: EdgeInsets.only(left: 8.h),
@@ -54,7 +58,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                 ),
               ),
               SizedBox(height: 32.h),
-              CustomButton(title: 'Send OTP', onpress: _onTapOtpVerification),
+              CustomButton(label: 'Send OTP', onPressed: _onTapOtpVerification),
             ],
           ),
         ),

@@ -79,7 +79,7 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
               SizedBox(height: 32.h),
               _takingBackSideNidPicture(context),
               SizedBox(height: 118.h),
-              CustomButton(title: 'Next', onpress: _onTapValidate),
+              CustomButton(label: 'Next', onPressed: _onTapValidate),
             ],
           ),
         ),
@@ -156,7 +156,7 @@ class _NidPictureScreenState extends State<NidPictureScreen> {
       height: 200,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColor.primaryColor.withOpacity(.2),
+        color: Color(0xFFE6F6F7),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: AppColor.primaryColor),
       ),

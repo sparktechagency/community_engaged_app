@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:community_engaged_app/gen/assets.gen.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
@@ -64,7 +65,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           child: Column(
             children: [
               SizedBox(height: 20.h),
-              AppLogo(),
+              Assets.icons.tarataniLogoFinal.image(
+                height: 128.h,
+                width: 128.w,
+              ),
               SizedBox(height: 96.h),
               CustomPinCodeTextField(),
               SizedBox(height: 8.h),
@@ -74,12 +78,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   CustomText(
                     text: "Didn't get the code?",
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                   ),
                   isWaiting
                       ? CustomText(
                         text: 'Resend code in $timerText',
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w400,
                       )
                       : GestureDetector(
                         onTap: () {
@@ -94,7 +98,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 ],
               ),
               SizedBox(height: 32.h),
-              CustomButton(title: 'Verify', onpress: (){
+              CustomButton(label: 'Verify', onPressed: (){
                 Get.toNamed(AppRoutes.resetPasswordScreen);
               })
             ],

@@ -26,7 +26,9 @@ class _MainBottomNavBarScreenState extends State<MainBottomNavBarScreen> {
     return Scaffold(
       // resizeToAvoidBottomInset: true,
       body: _screens[_selectedIndex],
-      bottomNavigationBar: SafeArea(
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.noAnimation,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(left: 24.r, right: 24.r),
           child: Container(

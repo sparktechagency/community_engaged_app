@@ -67,24 +67,24 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
               ),
               SizedBox(height: 8.h),
               CustomButton(
-                title: 'NidFront.jpg',
-                onpress: () {
+                label: 'NidFront.jpg',
+                onPressed: () {
                   showNidPopUp(context);
                 },
                 height: 42.h,
               ),
               SizedBox(height: 2.h),
               CustomButton(
-                title: 'NidBack.jpg',
-                onpress: () {
+                label: 'NidBack.jpg',
+                onPressed: () {
                  showNidPopUp(context);
                 },
                 height: 42.h,
               ),
               SizedBox(height: 32.h),
               CustomButton(
-                title: 'Edit Profile',
-                onpress: () {
+                label: 'Edit Profile',
+                onPressed: () {
                   Get.toNamed(AppRoutes.editProfileScreen);
                 },
               ),

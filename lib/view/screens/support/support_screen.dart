@@ -20,6 +20,7 @@ class _SupportScreenState extends State<SupportScreen> {
       throw Exception('Could not launch $_url');
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,8 +68,8 @@ class _SupportScreenState extends State<SupportScreen> {
                       child: CustomText(
                         text:
                             "If you have any questions, need assistance, or want to discuss your progress, feel free to reach out to your coach. We're here to help you achieve your fitness goals!",
-                        fontsize: 15.sp,
-                        textAlign: TextAlign.start,
+                        fontsize: 13.sp,
+                        textAlign: TextAlign.center,
                         textOverflow: TextOverflow.fade,
                         color: Colors.black,
                       ),
@@ -92,6 +93,7 @@ class _SupportScreenState extends State<SupportScreen> {
                             text: 'Support',
                             fontsize: 22.sp,
                             fontWeight: FontWeight.bold,
+                            color: AppColor.primaryColor,
                             // color: Colors.black,
                           ),
                           SizedBox(width: 8.w),
@@ -124,39 +126,43 @@ class _SupportScreenState extends State<SupportScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Row(
-                          children: [
-                            Icon(Icons.call, color: AppColor.cardColorE9F2F9),
-                            SizedBox(width: 16.w),
-                            GestureDetector(
-                              onTap:()=> makingPhoneCall('01784567684'),
-                              child: CustomText(
-                                text: '01784567684',
-                                fontsize: 16.sp,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
+                        Flexible(
+                          child: Row(
+                            children: [
+                              Icon(Icons.call, color: AppColor.cardColorE9F2F9),
+                              SizedBox(width: 14.w),
+                              GestureDetector(
+                                onTap: () => makingPhoneCall('01784567684'),
+                                child: CustomText(
+                                  text: '01784567684',
+                                  fontsize: 14.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Icon(Icons.mail, color: AppColor.cardColorE9F2F9),
-                            SizedBox(width: 16.w),
-                            GestureDetector(
-                              onTap: (){
-                                makingEmailCall('shofiqur7684@gmail.com');
-                              },
-                              child: CustomText(
-                                text: 'shofiqur7684@gmail.com',
-                                decoration: TextDecoration.underline,
-                                fontsize: 16.sp,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                        Flexible(
+                          child: Row(
+                            children: [
+                              Icon(Icons.mail, color: AppColor.cardColorE9F2F9),
+                              SizedBox(width: 14.w),
+                              GestureDetector(
+                                onTap: () {
+                                  makingEmailCall('shofiqur7684@gmail.com');
+                                },
+                                child: CustomText(
+                                  text: 'shofiqur7684@gmail.com',
+                                  // decoration: TextDecoration.underline,
+                                  fontsize: 14.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),

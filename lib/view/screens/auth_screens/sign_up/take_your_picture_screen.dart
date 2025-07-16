@@ -69,8 +69,8 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
               ),
               SizedBox(height: 20.h),
               CustomButton(
-                title: 'Take Picture',
-                onpress: () {
+                label: 'Take Picture',
+                onPressed: () {
                   customPhotoPickerBottomSheet(
                     context: context,
                     onGalleryTap: _getPhotoFromGallery,
@@ -81,13 +81,14 @@ class _TakeYourPictureScreenState extends State<TakeYourPictureScreen> {
               ),
               SizedBox(height: 238.h),
               CustomButton(
-                title: 'Sign Up',
-                onpress: () async {
+                label: 'Sign Up',
+                onPressed: () async {
                   await customPopUpWidget(
                     context: context,
                     title: 'Complete Signup',
                     subtitle: 'Do you want to Signup with Referral code?',
                     firstButton: 'Yes',
+                    borderColor: Colors.black,
                     lastButton: 'No',
                     onPressedFirstButton: () {
                       Get.toNamed(AppRoutes.addReferralCodeScreen);

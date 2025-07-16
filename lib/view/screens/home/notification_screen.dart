@@ -1,5 +1,6 @@
 import 'package:community_engaged_app/utils/app_colors.dart';
 import 'package:community_engaged_app/view/widgets/custom_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
         //   'Notifications',
         //   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
         // ),
-        title: CustomText(text: 'Notifications',fontsize: 22.sp,fontWeight: FontWeight.bold,color: Colors.black,),
+        title: CustomText(
+          text: 'Notifications',
+          fontsize: 22.sp,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
         centerTitle: true,
       ),
       body: Padding(
@@ -43,22 +49,48 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             color: AppColor.primaryColor,
                           ),
                         ),
-                        Icon(Icons.notifications,color: AppColor.cardColorE9F2F9,)
+                        Icon(
+                          CupertinoIcons.bell,
+                          color: AppColor.cardColorE9F2F9,
+                        ),
                       ],
                     ),
-                    title: CustomText(text: 'Confirm Payment',textAlign: TextAlign.start,fontWeight: FontWeight.w700,color: Colors.black,),
+                    title: CustomText(
+                      text: 'Confirm Payment',
+                      textAlign: TextAlign.start,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                    ),
                     subtitle: Column(
                       // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText(text: 'Your payment is completed',textAlign: TextAlign.start,fontWeight: FontWeight.w500,color: Colors.black,fontsize: 14.sp,),
+                        CustomText(
+                          text: 'Your payment is completed',
+                          textAlign: TextAlign.start,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                          fontsize: 14.sp,
+                        ),
                         Row(
                           children: [
-                            CustomText(text: '10:00am',textAlign: TextAlign.start,fontWeight: FontWeight.w500,color: Colors.black,fontsize: 12.sp,),
-                            SizedBox(width: 16.w,),
-                            CustomText(text: 'Today',textAlign: TextAlign.start,fontWeight: FontWeight.w500,color: Colors.black,fontsize: 12.sp,),
+                            CustomText(
+                              text: '10:00am',
+                              textAlign: TextAlign.start,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                              fontsize: 12.sp,
+                            ),
+                            SizedBox(width: 16.w),
+                            CustomText(
+                              text: 'Today',
+                              textAlign: TextAlign.start,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                              fontsize: 12.sp,
+                            ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   );

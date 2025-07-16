@@ -1,3 +1,5 @@
+import 'package:community_engaged_app/gen/assets.gen.dart';
+import 'package:community_engaged_app/gen/fonts.gen.dart';
 import 'package:community_engaged_app/routes/app_routes.dart';
 import 'package:community_engaged_app/routes/export.dart';
 import 'package:community_engaged_app/utils/app_colors.dart';
@@ -34,7 +36,10 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Column(
               children: [
                 SizedBox(height: 120.h),
-                AppLogo(),
+                Assets.icons.tarataniLogoFinal.image(
+                  height: 128.h,
+                  width: 128.w,
+                ),
                 SizedBox(height: 96.h),
                 CustomTextField(
                   controller: _emailTEController,
@@ -56,7 +61,10 @@ class _SignInScreenState extends State<SignInScreen> {
                   suffixIconColor: Colors.black,
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 8.0),
-                    child: SvgPicture.asset(AppImage.keyIconUrl,color: AppColor.primaryColor,),
+                    child: SvgPicture.asset(
+                      AppImage.keyIconUrl,
+                      color: AppColor.primaryColor,
+                    ),
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -71,29 +79,29 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: CustomText(
                         text: 'Forget Password?',
                         color: AppColor.textButtonColor,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ],
                 ),
                 SizedBox(height: 32.h),
-                CustomButton(title: "Let's Go", onpress: _onTapSignInButton),
+                CustomButton(label: "Let's Go", onPressed: _onTapSignInButton),
                 SizedBox(height: 16.h),
                 RichText(
                   text: TextSpan(
                     text: "Don't have an account?  ",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: Colors.black54,
-                      fontFamily: 'Outfit',
+                      fontFamily: FontFamily.poppins,
                     ),
                     children: [
                       TextSpan(
                         text: "Sign Up",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w400,
                           color: Colors.red,
-                          fontFamily: 'Outfit',
+                          fontFamily: FontFamily.poppins,
                         ),
                         recognizer:
                             TapGestureRecognizer()..onTap = _onTapSignupButton,
@@ -125,5 +133,3 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 }
-
-
